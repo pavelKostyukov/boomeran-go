@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BoomeranGO — Аренда без границ</title>
+<title>BoomeranGO — Арендуй. Зарабатывай. Возвращай.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 a{color:inherit;text-decoration:none}
 h1,h2,h3,h4{font-family:'Syne',sans-serif}
 
-/* ── NAV ── */
+/* NAV */
 .nav{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:var(--sh0)}
 .nav-inner{max-width:1320px;margin:0 auto;padding:0 20px;height:68px;display:flex;align-items:center;gap:14px}
 .burger{display:flex;flex-direction:column;gap:4px;padding:6px;cursor:pointer;flex-shrink:0}
@@ -47,22 +47,56 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .nav-ava:hover{border-color:var(--accent)}
 .nav-ava img{width:100%;height:100%;object-fit:cover}
 
+/* DRAWER */
+.dbg{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);z-index:200;display:none;opacity:0;transition:opacity .25s}
+.dbg.open{display:block;opacity:1}
+.drawer{position:fixed;left:0;top:0;bottom:0;width:300px;background:var(--card);z-index:300;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);box-shadow:var(--sh2);display:flex;flex-direction:column;overflow-y:auto}
+.drawer.open{transform:translateX(0)}
+.dr-head{display:flex;align-items:center;justify-content:space-between;padding:20px 20px 16px;border-bottom:1px solid var(--border)}
+.dr-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.03em}
+.dr-logo .go{color:var(--accent)}
+.dr-x{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--muted)}
+.dr-x:hover{background:var(--bg);color:var(--text)}
+.dr-user{display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--bg)}
+.dr-ava{width:44px;height:44px;border-radius:50%;background:var(--accent-lt);color:var(--accent);font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border:2px solid var(--accent)}
+.dr-ava img{width:100%;height:100%;object-fit:cover}
+.dr-name{font-weight:700;font-size:15px}
+.dr-sub{font-size:11px;color:var(--muted);margin-top:1px}
+.dr-nav{padding:10px 0;flex:1}
+.dr-sec{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding:12px 20px 4px}
+.dr-nav a{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:14px;font-weight:600;color:var(--txt2);cursor:pointer;transition:.12s}
+.dr-nav a:hover{background:var(--bg);color:var(--text)}
+.dr-dot{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0}
+.dr-foot{padding:16px 20px;border-top:1px solid var(--border);margin-top:auto}
+.dr-login-btn{width:100%;padding:13px;background:var(--accent);color:#fff;border-radius:12px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
+.dr-login-btn:hover{background:var(--accent-dk)}
+.dr-user-lbl{font-size:12px;color:var(--muted);margin-bottom:10px}
+.dr-logout{width:100%;padding:11px;background:var(--bg);border:1.5px solid var(--border);color:var(--txt2);border-radius:10px;font-size:13px;font-weight:600;transition:.15s}
+.dr-logout:hover{border-color:var(--red);color:var(--red)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#1d4ed8;color:#fff;padding:12px 22px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:9999;white-space:nowrap;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
 /* ── HERO ── */
 .hero{background:#18160f;padding:0 20px;overflow:hidden;position:relative}
 .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 100% at 65% 50%,rgba(232,92,0,.22) 0%,transparent 70%)}
 .hero-inner{max-width:1320px;margin:0 auto;padding:52px 0 44px;display:grid;grid-template-columns:1fr 480px;gap:40px;align-items:center;position:relative;z-index:1}
-.hero-left{}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:12px;color:rgba(255,255,255,.6);margin-bottom:20px;font-weight:600;letter-spacing:.04em}
-.hero-tag span{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block}
-.hero h1{font-size:clamp(30px,4vw,54px);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:16px}
+.hero-tag span{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero h1{font-size:clamp(34px,4.5vw,62px);font-weight:800;color:#fff;line-height:1.02;letter-spacing:-.04em;margin-bottom:16px}
 .hero h1 em{color:var(--accent);font-style:normal}
-.hero-sub{font-size:16px;color:rgba(255,255,255,.55);max-width:420px;line-height:1.65;margin-bottom:32px}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.55);max-width:420px;line-height:1.65;margin-bottom:28px}
+.hero-utp{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.utp-pill{display:flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12px;color:rgba(255,255,255,.7);font-weight:600}
+.utp-pill .ico{font-size:13px}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
 .hero-cta-main{padding:14px 28px;background:var(--accent);color:#fff;border-radius:14px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;transition:.15s;box-shadow:0 6px 20px rgba(232,92,0,.4)}
 .hero-cta-main:hover{background:var(--accent-mid);transform:translateY(-1px)}
 .hero-cta-sec{padding:14px 24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;border-radius:14px;font-size:14px;font-weight:600;transition:.15s}
 .hero-cta-sec:hover{background:rgba(255,255,255,.14)}
-.hero-stats{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:28px;margin-top:32px;flex-wrap:wrap}
 .hero-stat{display:flex;flex-direction:column;gap:2px}
 .hstat-n{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--accent)}
 .hstat-l{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em}
@@ -71,6 +105,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .hcp-img{height:140px;border-radius:12px;background:linear-gradient(135deg,#2d2008,#4a3520);margin-bottom:12px;display:flex;align-items:center;justify-content:center;font-size:40px;position:relative;overflow:hidden}
 .hcp-img img{width:100%;height:100%;object-fit:cover;border-radius:12px}
 .hcp-badge{position:absolute;top:8px;left:8px;padding:3px 10px;background:#dcfce7;color:#15803d;border-radius:999px;font-size:10px;font-weight:700}
+.hcp-badge-try{position:absolute;top:8px;right:8px;padding:3px 10px;background:rgba(232,92,0,.9);color:#fff;border-radius:999px;font-size:10px;font-weight:700}
 .hcp-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
 .hcp-price{color:var(--accent);font-weight:700;font-size:14px}
 .hcp-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
@@ -78,8 +113,72 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .hero-mini-cards{display:flex;gap:10px}
 .hmc{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px;text-align:center}
 .hmc-icon{font-size:24px;margin-bottom:6px}
-.hmc-label{font-size:11px;color:rgba(255,255,255,.5);font-weight:600}
+.hmc-label{font-size:11px;color:rgba(255,255,255,.5);font-weight:600;line-height:1.3}
 @media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-right{display:none}}
+
+/* ── TRY BEFORE YOU BUY ── */
+.tbyb{background:var(--card);padding:0 20px;border-bottom:1px solid var(--border)}
+.tbyb-inner{max-width:1320px;margin:0 auto;padding:56px 0}
+.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section-title{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
+.section-title em{color:var(--accent);font-style:normal}
+.section-sub{font-size:15px;color:var(--txt2);max-width:560px;line-height:1.65;margin-bottom:36px}
+.tbyb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+@media(max-width:640px){.tbyb-grid{grid-template-columns:repeat(2,1fr)}}
+.tbyb-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .2s;position:relative}
+.tbyb-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--sh2)}
+.tbyb-img{height:140px;object-fit:cover;width:100%;display:block;background:var(--bg2)}
+.tbyb-body{padding:12px 14px 14px}
+.tbyb-cat{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.tbyb-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;line-height:1.3;margin-bottom:6px}
+.tbyb-why{font-size:11px;color:var(--txt2);line-height:1.4;margin-bottom:8px}
+.tbyb-price{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--accent)}
+.tbyb-vs{font-size:10px;color:var(--muted);margin-top:2px}
+.tbyb-badge{position:absolute;top:10px;left:10px;padding:3px 8px;background:var(--accent);color:#fff;border-radius:999px;font-size:9px;font-weight:700;letter-spacing:.04em}
+.tbyb-cta{margin-top:32px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.tbyb-cta-btn{padding:13px 26px;background:var(--accent);color:#fff;border-radius:12px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;transition:.15s;box-shadow:0 4px 16px rgba(232,92,0,.3)}
+.tbyb-cta-btn:hover{background:var(--accent-dk)}
+.tbyb-cta-note{font-size:13px;color:var(--muted)}
+
+/* ── HOW IT WORKS ── */
+.how{background:var(--bg2);padding:0 20px}
+.how-inner{max-width:1320px;margin:0 auto;padding:56px 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+@media(max-width:720px){.steps{grid-template-columns:1fr;gap:16px}}
+.step{background:var(--card);border-radius:var(--r);padding:28px;border:1px solid var(--border);position:relative}
+.step-num{width:36px;height:36px;border-radius:10px;background:var(--accent);color:#fff;font-family:'Syne',sans-serif;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.step-icon{font-size:28px;margin-bottom:10px}
+.step h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.step p{font-size:13px;color:var(--txt2);line-height:1.6}
+.step-accent{border-color:var(--accent);background:linear-gradient(135deg,#fff3ec,#fff)}
+
+/* ── SOCIAL PROOF ── */
+.proof{background:var(--card);padding:0 20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.proof-inner{max-width:1320px;margin:0 auto;padding:48px 0}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:32px}
+@media(max-width:800px){.proof-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.proof-grid{grid-template-columns:repeat(2,1fr)}}
+.proof-stat{text-align:center}
+.proof-n{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--accent);line-height:1}
+.proof-l{font-size:13px;color:var(--txt2);margin-top:4px;line-height:1.4}
+.reviews-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+@media(max-width:720px){.reviews-row{grid-template-columns:1fr}}
+.review-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.review-stars{color:var(--gold);font-size:13px;margin-bottom:8px}
+.review-text{font-size:13px;color:var(--txt2);line-height:1.6;margin-bottom:12px;font-style:italic}
+.review-author{display:flex;align-items:center;gap:8px}
+.review-dot{width:28px;height:28px;border-radius:50%;background:var(--accent-lt);color:var(--accent);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+.review-name{font-size:12px;font-weight:700}
+.review-meta{font-size:11px;color:var(--muted)}
+
+/* ── URGENCY BANNER ── */
+.urgency{background:var(--accent);padding:14px 20px;text-align:center;position:relative;overflow:hidden}
+.urgency::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 8px)}
+.urgency-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.urgency-text{color:#fff;font-size:14px;font-weight:700}
+.urgency-count{background:rgba(0,0,0,.2);color:#fff;padding:4px 12px;border-radius:999px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;min-width:60px;text-align:center}
+.urgency-cta{padding:8px 18px;background:#fff;color:var(--accent);border-radius:8px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:.15s;flex-shrink:0}
+.urgency-cta:hover{background:var(--accent-lt)}
 
 /* ── FILTERS BAR ── */
 .filters-bar{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:68px;z-index:90}
@@ -96,7 +195,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .sub-btn:hover{border-color:var(--accent);color:var(--accent)}
 .sub-btn.active{background:var(--accent-lt);color:var(--accent);border-color:var(--accent)}
 
-/* ── SORT/FILTER ROW ── */
+/* ── SORT ROW ── */
 .sort-row{max-width:1320px;margin:0 auto;padding:16px 20px 8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .sort-label{font-size:13px;color:var(--muted)}
 .sort-chips{display:flex;gap:8px;flex-wrap:wrap}
@@ -106,7 +205,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .sort-nsp{flex:1}
 .results-count{font-size:13px;color:var(--muted)}
 
-/* ── FEED GRID ── */
+/* ── FEED ── */
 .feed-wrap{max-width:1320px;margin:0 auto;padding:4px 20px 60px}
 .feed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
 @media(max-width:640px){.feed-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
@@ -165,10 +264,11 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .det-price-week{font-size:13px;color:var(--muted);margin-bottom:10px}
 .det-deposit{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg);border-radius:10px;font-size:13px;color:var(--txt2);margin-bottom:16px}
 .det-deposit strong{color:var(--text)}
+.det-tbyb-hint{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--accent-lt);border:1px solid #ffd4b8;border-radius:10px;font-size:12px;color:var(--accent-dk);margin-bottom:16px;line-height:1.5}
+.det-tbyb-hint strong{display:block;font-size:13px;margin-bottom:2px}
 .det-owner-row{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border-radius:10px;margin-bottom:18px}
 .det-ava{width:42px;height:42px;border-radius:50%;background:var(--accent-lt);color:var(--accent);font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
 .det-ava img{width:100%;height:100%;object-fit:cover}
-.det-owner-info{}
 .det-owner-name{font-size:14px;font-weight:700}
 .det-owner-stat{font-size:11px;color:var(--muted);margin-top:2px}
 .rent-btn{width:100%;padding:16px;background:var(--accent);color:#fff;border-radius:14px;font-family:'Syne',sans-serif;font-size:16px;font-weight:700;transition:.15s;box-shadow:0 6px 20px rgba(232,92,0,.35);margin-bottom:10px}
@@ -216,7 +316,6 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .pf-hero-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:20px}
 .pf-ava{width:80px;height:80px;border-radius:50%;border:3px solid var(--accent);background:var(--accent-lt);color:var(--accent);font-family:'Syne',sans-serif;font-size:32px;font-weight:800;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
 .pf-ava img{width:100%;height:100%;object-fit:cover}
-.pf-info{}
 .pf-name{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff}
 .pf-email{font-size:13px;color:rgba(255,255,255,.5);margin-top:2px}
 .pf-stats{display:flex;gap:20px;margin-top:10px;flex-wrap:wrap}
@@ -239,103 +338,47 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .bi-info{flex:1}
 .bi-title{font-size:13px;font-weight:700}
 .bi-dates{font-size:11px;color:var(--muted);margin-top:2px}
-.status-pill{padding:3px 10px;border-radius:999px;font-size:10px;font-weight:700;white-space:nowrap}
-.sp-pending{background:#fef9c3;color:#92400e}
-.sp-confirmed{background:#dcfce7;color:#15803d}
-.sp-rejected{background:#fee2e2;color:#dc2626}
-.sp-completed{background:#e0e7ff;color:#3730a3}
-.empty-hint{font-size:13px;color:var(--muted);padding:12px 0}
-.pf-not-auth{max-width:1320px;margin:0 auto;padding:60px 20px;text-align:center}
-.pf-not-auth .ico{font-size:56px;margin-bottom:20px}
-.pf-not-auth h2{font-size:24px;margin-bottom:8px}
-.pf-not-auth p{color:var(--muted);margin-bottom:28px;max-width:360px;margin-left:auto;margin-right:auto}
-.ya-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:#fc3f1d;color:#fff;border-radius:14px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;transition:.15s;box-shadow:0 6px 20px rgba(252,63,29,.3)}
-.ya-btn:hover{background:#e03010}
-.logout-btn{padding:10px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;font-size:13px;font-weight:600;color:var(--txt2);transition:.15s;margin-top:12px}
-.logout-btn:hover{border-color:var(--red);color:var(--red)}
-
-/* ── DRAWER ── */
-.dbg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:200}
-.dbg.open{display:block}
-.drawer{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:85vw;background:#fff;z-index:201;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:6px 0 32px rgba(0,0,0,.18)}
-.drawer.open{transform:translateX(0)}
-.dr-head{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.dr-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:19px}.dr-logo .go{color:var(--accent)}
-.dr-x{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:20px;cursor:pointer}
-.dr-x:hover{background:var(--bg)}
-.dr-user{padding:14px 20px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--border)}
-.dr-ava{width:40px;height:40px;border-radius:50%;background:var(--accent-lt);color:var(--accent);font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
-.dr-ava img{width:100%;height:100%;object-fit:cover}
-.dr-name{font-size:14px;font-weight:700}
-.dr-sub{font-size:11px;color:var(--muted)}
-.dr-nav{flex:1;overflow-y:auto;padding:6px 0}
-.dr-sec{padding:10px 20px 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.dr-nav a{display:flex;align-items:center;gap:10px;padding:11px 20px;font-size:14px;color:var(--text);cursor:pointer;transition:.12s}
-.dr-nav a:hover{background:var(--bg)}
-.dr-dot{width:6px;height:6px;border-radius:50%;background:#d1cec8;flex-shrink:0}
-.dr-nav a:hover .dr-dot{background:var(--accent)}
-.dr-foot{padding:14px 20px;border-top:1px solid var(--border)}
-.dr-login-btn{width:100%;padding:12px;background:#fc3f1d;color:#fff;border-radius:10px;font-size:14px;font-weight:600;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
-.dr-login-btn:hover{background:#e03010}
-.dr-logout{width:100%;padding:11px;background:var(--bg2);color:var(--txt2);border-radius:10px;font-size:13px;font-weight:600;border:1px solid var(--border)}
-.dr-user-lbl{font-size:11px;color:var(--muted);text-align:center;margin-bottom:8px}
+.bi-status{display:inline-flex;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700;margin-top:4px}
+.bi-status.pending{background:#fef9c3;color:#854d0e}
+.bi-status.approved{background:#dcfce7;color:#166534}
+.bi-status.declined{background:#fee2e2;color:#991b1b}
+.pf-not-auth{text-align:center;padding:80px 20px}
+.pf-not-auth .ico{font-size:60px;margin-bottom:16px}
+.pf-not-auth h2{font-size:24px;font-weight:800;margin-bottom:8px}
+.pf-not-auth p{color:var(--muted);margin-bottom:28px}
+.ya-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--accent);color:#fff;border-radius:14px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;transition:.15s;box-shadow:0 6px 20px rgba(232,92,0,.35)}
+.ya-btn:hover{background:var(--accent-dk)}
 
 /* ── DOCS ── */
-.docs-view{display:none;min-height:calc(100vh - 68px);background:var(--card)}
-.docs-layout{display:grid;grid-template-columns:240px 1fr;max-width:1100px;margin:0 auto}
-.docs-side{border-right:1px solid var(--border);padding:28px 18px;position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto}
-.docs-side h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:12px}
-.dlnk{display:block;padding:9px 12px;border-radius:10px;font-size:13px;color:var(--txt2);cursor:pointer;transition:.15s;margin-bottom:2px}
-.dlnk:hover{background:var(--bg);color:var(--text)}
-.dlnk.active{background:var(--accent-lt);color:var(--accent);font-weight:600}
-.docs-body{padding:40px 48px 64px;max-width:700px}
-.docs-body h1{font-size:26px;font-weight:800;margin-bottom:6px}
-.docs-date{font-size:12px;color:var(--muted);margin-bottom:32px}
-.docs-body h2{font-size:17px;font-weight:700;margin:24px 0 8px}
-.docs-body p{font-size:14px;color:var(--txt2);line-height:1.8;margin-bottom:10px}
-.docs-body ul{padding-left:20px;margin-bottom:10px}
-.docs-body li{font-size:14px;color:var(--txt2);line-height:1.8;margin-bottom:4px}
-@media(max-width:760px){.docs-layout{grid-template-columns:1fr}.docs-side{display:none}.docs-body{padding:24px 20px}}
+.docs-layout{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:start;padding-top:24px}
+@media(max-width:760px){.docs-layout{grid-template-columns:1fr}}
+.docs-nav{background:var(--card);border-radius:var(--r);padding:16px;box-shadow:var(--sh0);border:1px solid var(--border);position:sticky;top:120px}
+.docs-nav a.dlnk{display:block;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:600;color:var(--txt2);cursor:pointer;transition:.12s;margin-bottom:2px}
+.docs-nav a.dlnk:hover{background:var(--bg);color:var(--text)}
+.docs-nav a.dlnk.active{background:var(--accent-lt);color:var(--accent)}
+.docs-content{background:var(--card);border-radius:var(--r);padding:32px;box-shadow:var(--sh0);border:1px solid var(--border)}
+.docs-content h1{font-size:26px;font-weight:800;margin-bottom:4px}
+.docs-date{font-size:12px;color:var(--muted);margin-bottom:24px}
+.docs-content h2{font-size:17px;font-weight:800;margin:24px 0 8px}
+.docs-content p{font-size:14px;color:var(--txt2);line-height:1.75;margin-bottom:12px}
+.docs-content ul{padding-left:20px;margin-bottom:12px}
+.docs-content li{font-size:14px;color:var(--txt2);line-height:1.75}
 
 /* ── FOOTER ── */
-.footer{background:#18160f;padding:40px 20px;color:rgba(255,255,255,.45);font-size:12px}
-.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px}
-.footer-brand .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--accent);margin-bottom:8px}
-.footer-brand p{line-height:1.7}
-.footer-col h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:14px}
-.footer-col a{display:block;color:rgba(255,255,255,.4);margin-bottom:8px;cursor:pointer;transition:.15s}
-.footer-col a:hover{color:rgba(255,255,255,.75)}
-.footer-bottom{max-width:1320px;margin:28px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:11px}
-@media(max-width:640px){.footer-inner{grid-template-columns:1fr}.nav-search,.city-btn{display:none}}
-
-/* ── TOAST ── */
-.toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-8px);padding:12px 24px;border-radius:12px;font-size:13px;font-weight:600;z-index:9999;box-shadow:0 8px 28px rgba(0,0,0,.2);opacity:0;transition:all .25s;pointer-events:none;white-space:nowrap}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.footer{background:#18160f;padding:0 20px}
+.footer-inner{max-width:1320px;margin:0 auto;padding:48px 0 32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px}
+@media(max-width:720px){.footer-inner{grid-template-columns:1fr}}
+.footer-brand .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#fff;margin-bottom:10px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6}
+.footer-col h4{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;cursor:pointer;transition:.12s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{max-width:1320px;margin:0 auto;padding:20px 0;border-top:1px solid rgba(255,255,255,.08);display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.3)}
 </style>
 </head>
 <body>
 
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="burger" onclick="openDrawer()"><span></span><span></span><span></span></div>
-    <div class="nav-logo" onclick="goHome()">Boomeran<span class="go">GO</span></div>
-    <div class="nav-search">
-      <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Поиск по объявлениям..." oninput="onSearch(this.value)" id="nav-search-input">
-    </div>
-    <div class="nsp"></div>
-    <button class="city-btn" onclick="alert('Скоро: выбор города')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Москва
-    </button>
-    <button class="nav-post" onclick="openAddItem()">+ Разместить</button>
-    <div class="nav-ava" id="nav-ava" onclick="showProfile()"></div>
-  </div>
-</nav>
+<div id="toast" class="toast"></div>
 
 <!-- DRAWER BG -->
 <div class="dbg" id="dbg" onclick="closeDrawer()"></div>
@@ -366,22 +409,43 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
   <div class="dr-foot" id="dr-foot"></div>
 </aside>
 
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="burger" onclick="openDrawer()"><span></span><span></span><span></span></div>
+    <div class="nav-logo" onclick="goHome()">Boomeran<span class="go">GO</span></div>
+    <div class="nav-search">
+      <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Камера, дрель, платье..." oninput="onSearch(this.value)" id="nav-search-inp">
+    </div>
+    <div class="nsp"></div>
+    <button class="city-btn">📍 Москва</button>
+    <button class="nav-post" onclick="openAddItem()">+ Сдать в аренду</button>
+    <div class="nav-ava" id="nav-ava" onclick="showProfile()"></div>
+  </div>
+</nav>
+
 <!-- MAIN VIEW -->
 <div id="main-view">
+
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-tag"><span></span>ПЛАТФОРМА АРЕНДЫ №1 В РФ</div>
+        <div class="hero-tag"><span></span>АРЕНДУЙ · ЗАРАБАТЫВАЙ · ВОЗВРАЩАЙ</div>
         <h1>Арендуй.<br><em>Зарабатывай.</em><br>Возвращай.</h1>
-        <p class="hero-sub">Камеры, инструменты, одежда, техника — аренда от реальных людей и бизнеса. Быстро, безопасно, с залогом.</p>
+        <p class="hero-sub">Проверь любую вещь перед покупкой. Зарабатывай на том, что пылится дома. Всё просто — как бумеранг.</p>
+        <div class="hero-utp">
+          <div class="utp-pill"><span class="ico">🔍</span>Проверь перед покупкой</div>
+          <div class="utp-pill"><span class="ico">💰</span>Зарабатывай на простое</div>
+          <div class="utp-pill"><span class="ico">🔐</span>Залог защищает всех</div>
+        </div>
         <div class="hero-ctas">
-          <button class="hero-cta-main" onclick="document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">Найти вещь</button>
-          <button class="hero-cta-sec" onclick="openAddItem()">Сдать в аренду</button>
+          <button class="hero-cta-main" onclick="document.getElementById('tbyb-section').scrollIntoView({behavior:'smooth'})">Проверить перед покупкой</button>
+          <button class="hero-cta-sec" onclick="openAddItem()">Сдать вещь</button>
         </div>
         <div class="hero-stats">
           <div class="hero-stat"><span class="hstat-n">3 400+</span><span class="hstat-l">объявлений</span></div>
-          <div class="hero-stat"><span class="hstat-n">14</span><span class="hstat-l">категорий</span></div>
           <div class="hero-stat"><span class="hstat-n">40+</span><span class="hstat-l">городов</span></div>
           <div class="hero-stat"><span class="hstat-n">97%</span><span class="hstat-l">успешных сделок</span></div>
         </div>
@@ -391,6 +455,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
           <div class="hcp-img">
             <img src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=500&q=80" alt="">
             <div class="hcp-badge">Доступно</div>
+            <div class="hcp-badge-try">Проверь перед покупкой</div>
           </div>
           <div class="hcp-title">Canon EOS R50 + объектив</div>
           <div class="hcp-price">1 200 ₽/день</div>
@@ -400,15 +465,162 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
           </div>
         </div>
         <div class="hero-mini-cards">
-          <div class="hmc"><div class="hmc-icon">🔐</div><div class="hmc-label">Залог защищает</div></div>
+          <div class="hmc"><div class="hmc-icon">🔍</div><div class="hmc-label">Попробуй до покупки</div></div>
           <div class="hmc"><div class="hmc-icon">⭐</div><div class="hmc-label">Рейтинг арендодателей</div></div>
-          <div class="hmc"><div class="hmc-icon">💬</div><div class="hmc-label">Чат внутри платформы</div></div>
+          <div class="hmc"><div class="hmc-icon">♻️</div><div class="hmc-label">Вещи живут дольше</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FILTERS -->
+  <!-- URGENCY BANNER -->
+  <div class="urgency">
+    <div class="urgency-inner">
+      <span style="font-size:18px">🔥</span>
+      <span class="urgency-text">Сейчас онлайн арендуют:</span>
+      <span class="urgency-count" id="live-count">47</span>
+      <span class="urgency-text">человек. Лучшие вещи разбирают быстро!</span>
+      <button class="urgency-cta" onclick="document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">Смотреть →</button>
+    </div>
+  </div>
+
+  <!-- TRY BEFORE YOU BUY -->
+  <section class="tbyb" id="tbyb-section">
+    <div class="tbyb-inner">
+      <div class="section-eyebrow">Главная суперсила BoomeranGO</div>
+      <h2 class="section-title">Проверь любую вещь<br><em>перед покупкой</em></h2>
+      <p class="section-sub">Зачем тратить 50 000 ₽ на камеру, если можно взять её на выходные за 1 200 ₽ и понять — твоё это или нет? Умные покупки начинаются с аренды.</p>
+      <div class="tbyb-grid">
+        <div class="tbyb-card" onclick="selCat('electronics');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img class="tbyb-img" src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400&q=80" alt="Камера">
+          <div class="tbyb-badge">хит проверок</div>
+          <div class="tbyb-body">
+            <div class="tbyb-cat">Фотоаппараты</div>
+            <div class="tbyb-name">Canon / Sony / Fujifilm</div>
+            <div class="tbyb-why">Узнай, нужна ли тебе зеркалка или хватит смартфона</div>
+            <div class="tbyb-price">от 800 ₽/день</div>
+            <div class="tbyb-vs">vs. покупка от 40 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-card" onclick="selCat('tools');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img class="tbyb-img" src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&q=80" alt="Электроинструмент">
+          <div class="tbyb-body">
+            <div class="tbyb-cat">Инструменты</div>
+            <div class="tbyb-name">Bosch / DeWalt / Makita</div>
+            <div class="tbyb-why">Разберись, какая мощность нужна именно тебе</div>
+            <div class="tbyb-price">от 350 ₽/день</div>
+            <div class="tbyb-vs">vs. покупка от 8 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-card" onclick="selCat('sport');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img class="tbyb-img" src="https://images.unsplash.com/photo-1547234935-80c7145ec969?w=400&q=80" alt="Лыжи">
+          <div class="tbyb-body">
+            <div class="tbyb-cat">Спорт</div>
+            <div class="tbyb-name">Лыжи / Сноуборд / Велосипед</div>
+            <div class="tbyb-why">Попробуй до сезона — зацепит или нет?</div>
+            <div class="tbyb-price">от 700 ₽/день</div>
+            <div class="tbyb-vs">vs. покупка от 25 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-card" onclick="selCat('home');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img class="tbyb-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Dyson">
+          <div class="tbyb-badge">популярно</div>
+          <div class="tbyb-body">
+            <div class="tbyb-cat">Техника</div>
+            <div class="tbyb-name">Dyson / KitchenAid / Nespresso</div>
+            <div class="tbyb-why">Правда ли Dyson стоит своих денег? Проверь!</div>
+            <div class="tbyb-price">от 400 ₽/день</div>
+            <div class="tbyb-vs">vs. покупка от 30 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-card" onclick="selCat('clothes');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img class="tbyb-img" src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&q=80" alt="Пуховик">
+          <div class="tbyb-body">
+            <div class="tbyb-cat">Одежда</div>
+            <div class="tbyb-name">Canada Goose / Moncler / Вечерние платья</div>
+            <div class="tbyb-why">Почувствуй разницу перед большой покупкой</div>
+            <div class="tbyb-price">от 800 ₽/день</div>
+            <div class="tbyb-vs">vs. покупка от 50 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-card" onclick="selCat('electronics');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img class="tbyb-img" src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&q=80" alt="iPad">
+          <div class="tbyb-body">
+            <div class="tbyb-cat">Планшеты</div>
+            <div class="tbyb-name">iPad Pro / Samsung Tab / Wacom</div>
+            <div class="tbyb-why">Нужен ли тебе Pro или хватит обычного?</div>
+            <div class="tbyb-price">от 1 000 ₽/день</div>
+            <div class="tbyb-vs">vs. покупка от 60 000 ₽</div>
+          </div>
+        </div>
+      </div>
+      <div class="tbyb-cta">
+        <button class="tbyb-cta-btn" onclick="document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">Смотреть все вещи →</button>
+        <span class="tbyb-cta-note">3 400+ вещей уже ждут тебя</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="how-inner">
+      <div class="section-eyebrow">Как это работает</div>
+      <h2 class="section-title">Три шага<br>к умной аренде</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-icon">🔍</div>
+          <h3>Найди и закажи</h3>
+          <p>Выбирай из тысяч вещей в твоём городе. Фильтруй по цене, категории, рейтингу. Пиши арендодателю прямо на платформе.</p>
+        </div>
+        <div class="step step-accent">
+          <div class="step-num">2</div>
+          <div class="step-icon">✅</div>
+          <h3>Забирай и пробуй</h3>
+          <p>Получи вещь, попользуйся, реши — подходит ли она тебе. Хочешь купить — знаешь наверняка. Не хочешь — просто верни.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-icon">♻️</div>
+          <h3>Верни и сэкономь</h3>
+          <p>Возвращаешь вещь — получаешь залог назад. Оставляй отзыв, строй репутацию. Экономь на ненужных покупках.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="proof">
+    <div class="proof-inner">
+      <div class="section-eyebrow">Цифры говорят сами</div>
+      <h2 class="section-title">Нам доверяют</h2>
+      <div class="proof-grid">
+        <div class="proof-stat"><div class="proof-n">3 400+</div><div class="proof-l">активных объявлений прямо сейчас</div></div>
+        <div class="proof-stat"><div class="proof-n">97%</div><div class="proof-l">сделок завершаются без споров</div></div>
+        <div class="proof-stat"><div class="proof-n">18 000+</div><div class="proof-l">успешных аренд за год</div></div>
+        <div class="proof-stat"><div class="proof-n">₽ 4.2М</div><div class="proof-l">заработано арендодателями</div></div>
+      </div>
+      <div class="reviews-row">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">«Взял Canon R50 на неделю перед покупкой. Понял, что мне нужен объектив другой — сэкономил 15 000 ₽ на ошибке!»</div>
+          <div class="review-author"><div class="review-dot">А</div><div><div class="review-name">Артём, Москва</div><div class="review-meta">арендовал камеру</div></div></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">«Dyson оказался реально крутым. Взяла на 3 дня, сразу купила свой. Без проверки бы взяла другой и пожалела.»</div>
+          <div class="review-author"><div class="review-dot">М</div><div><div class="review-name">Мария, СПб</div><div class="review-meta">арендовала пылесос</div></div></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">«Сдаю перфоратор и шуруповёрт. Зарабатываю 8–12 тысяч в месяц пока они просто лежали в гараже.»</div>
+          <div class="review-author"><div class="review-dot">Н</div><div><div class="review-name">Николай, Москва</div><div class="review-meta">арендодатель</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTERS BAR -->
   <div class="filters-bar">
     <div class="filters-inner">
       <div class="cat-row" id="cat-row"></div>
@@ -439,14 +651,14 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="logo">BoomeranGO</div>
-        <p>Платформа аренды вещей между людьми и бизнесом. Россия и СНГ.</p>
+        <p>Арендуй. Зарабатывай. Возвращай.<br>Проверь любую вещь перед покупкой.</p>
       </div>
       <div class="footer-col">
         <h4>Арендаторам</h4>
         <a onclick="document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">Найти вещь</a>
+        <a onclick="document.getElementById('tbyb-section').scrollIntoView({behavior:'smooth'})">Проверить перед покупкой</a>
         <a onclick="showDocs('how')">Как арендовать</a>
         <a onclick="showDocs('safety')">Безопасность</a>
-        <a onclick="showProfile()">Мои заявки</a>
       </div>
       <div class="footer-col">
         <h4>Арендодателям</h4>
@@ -484,6 +696,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
           <div class="det-price-big" id="det-price"></div>
           <div class="det-price-week" id="det-price-week"></div>
           <div class="det-deposit" id="det-deposit"></div>
+          <div class="det-tbyb-hint">💡 <div><strong>Проверь перед покупкой</strong>Арендуй на пару дней — пойми, нужна ли эта вещь тебе. Платишь только за аренду, залог вернётся.</div></div>
           <div class="det-owner-row">
             <div class="det-ava" id="det-ava"></div>
             <div class="det-owner-info">
@@ -505,7 +718,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
     <div class="back-btn" onclick="goHome()">← Назад</div>
     <div class="add-wrap">
       <div class="page-title">Разместить объявление</div>
-      <div class="page-sub">Опишите вещь — арендаторы найдут её сами</div>
+      <div class="page-sub">Ваша вещь простаивает — пусть зарабатывает</div>
       <div class="add-tips">
         <h4>💡 Советы для быстрой аренды</h4>
         <ul>
@@ -609,7 +822,6 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
           <div class="pf-stats">
             <div class="pf-stat"><span class="pf-stat-n" id="pf-items-count">0</span><span class="pf-stat-l">объявлений</span></div>
             <div class="pf-stat"><span class="pf-stat-n" id="pf-bookings-count">0</span><span class="pf-stat-l">аренд</span></div>
-            <div class="pf-stat"><span class="pf-stat-n">★ —</span><span class="pf-stat-l">рейтинг</span></div>
           </div>
         </div>
       </div>
@@ -617,98 +829,110 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
     <div class="pf-content">
       <div class="pf-card">
         <div class="pf-card-title">Мои объявления <a onclick="openAddItem()">+ Добавить</a></div>
-        <div id="my-items"></div>
+        <div id="pf-items-list"><div style="font-size:13px;color:var(--muted);padding:16px 0">У вас пока нет объявлений</div></div>
       </div>
       <div class="pf-card">
         <div class="pf-card-title">Мои заявки на аренду</div>
-        <div id="my-bookings"></div>
+        <div id="pf-bookings-list"><div style="font-size:13px;color:var(--muted);padding:16px 0">У вас пока нет заявок</div></div>
       </div>
-    </div>
-    <div style="max-width:1320px;margin:0 auto;padding:0 20px 40px">
-      <button class="logout-btn" onclick="yandexLogout()">Выйти из аккаунта</button>
     </div>
   </div>
 </div>
 
 <!-- DOCS VIEW -->
 <div id="docs-view" class="docs-view">
-  <div class="docs-layout">
-    <div class="docs-side">
-      <h3>Документы</h3>
-      <div class="dlnk" onclick="showDocs('how')">Как это работает</div>
-      <div class="dlnk" onclick="showDocs('safety')">Безопасность сделок</div>
-      <div class="dlnk" onclick="showDocs('privacy')">Политика конфиденциальности</div>
-      <div class="dlnk" onclick="showDocs('terms')">Пользовательское соглашение</div>
-      <div class="dlnk" onclick="showDocs('consent')">Согласие на обработку данных</div>
-      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
-        <div class="dlnk" onclick="goHome()" style="color:var(--accent)">← На главную</div>
+  <div class="page-wrap">
+    <div class="back-btn" onclick="goHome()">← Назад</div>
+    <div class="docs-layout">
+      <div class="docs-nav">
+        <a class="dlnk" id="dlnk-how" onclick="showDocs('how')">📖 Как это работает</a>
+        <a class="dlnk" id="dlnk-safety" onclick="showDocs('safety')">🔐 Безопасность</a>
+        <a class="dlnk" id="dlnk-privacy" onclick="showDocs('privacy')">🛡️ Конфиденциальность</a>
+        <a class="dlnk" id="dlnk-terms" onclick="showDocs('terms')">📄 Пользовательское соглашение</a>
+        <a class="dlnk" id="dlnk-consent" onclick="showDocs('consent')">✅ Согласие на обработку данных</a>
       </div>
+      <div class="docs-content"><div id="docs-body"></div></div>
     </div>
-    <div class="docs-body" id="docs-body"></div>
   </div>
 </div>
 
 <!-- BOOKING MODAL -->
 <div class="modal-overlay" id="book-modal">
   <div class="modal-box">
-    <button class="modal-x" onclick="closeBookModal()">×</button>
-    <div class="modal-h">Заявка на аренду</div>
-    <div id="book-item-name" style="font-size:14px;color:var(--muted);margin-bottom:16px;font-weight:600"></div>
-    <div class="frow-2">
-      <div class="frow">
-        <label class="flabel">Дата начала *</label>
-        <input id="book-from" class="finput" type="date" onchange="calcTotal()">
-      </div>
-      <div class="frow">
-        <label class="flabel">Дата окончания *</label>
-        <input id="book-to" class="finput" type="date" onchange="calcTotal()">
-      </div>
-    </div>
-    <div class="book-total" id="book-total">Выберите даты для расчёта стоимости</div>
+    <button class="modal-x" onclick="closeModal()">×</button>
+    <div class="modal-h">Оформить аренду</div>
     <div class="frow">
-      <label class="flabel">Сообщение владельцу</label>
-      <textarea id="book-msg" class="ftextarea" placeholder="Расскажите о себе и как планируете использовать..."></textarea>
+      <label class="flabel">Дата начала</label>
+      <input type="date" id="book-from" class="finput" oninput="calcTotal()">
     </div>
-    <button class="btn-full" id="book-btn" onclick="confirmBook()">Отправить заявку</button>
-    <p style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center">Владелец рассмотрит заявку и свяжется с вами</p>
+    <div class="frow">
+      <label class="flabel">Дата окончания</label>
+      <input type="date" id="book-to" class="finput" oninput="calcTotal()">
+    </div>
+    <div class="frow">
+      <label class="flabel">Комментарий арендодателю</label>
+      <textarea id="book-comment" class="ftextarea" placeholder="Расскажите о себе, зачем нужна вещь..."></textarea>
+    </div>
+    <div class="book-total" id="book-total"></div>
+    <button class="btn-full" id="book-btn" onclick="submitBooking()">Отправить заявку</button>
   </div>
 </div>
 
 <script>
 // =================== CONFIG ===================
-const SUPABASE_URL = 'REPLACE_SUPABASE_URL';
-const SUPABASE_KEY = 'REPLACE_SUPABASE_KEY';
-const YANDEX_CLIENT_ID = 'REPLACE_YANDEX_CLIENT_ID';
-const REDIRECT_URI = window.location.origin + window.location.pathname;
-let sb = null, currentUser = null, currentItem = null;
-let activeCategory = 'all', activeSub = null, searchQ = '', sortMode = 'new';
-let allItems = [];
+const SUPABASE_URL='https://vvnqqwsdvyxobohoefqx.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2bnFxd3Nkdnl4b2JvaG9lZnF4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc5MDQ3OTAsImV4cCI6MjA2MzQ4MDc5MH0.pvN4kl5bZyq9AcYxLjMM5BdG13bgxA7oqRCX3bMt5b0';
+const YANDEX_CLIENT_ID='d5cbaa9f2ea84eadb94e3e88c38e7de0';
+const REDIRECT_URI=window.location.origin+window.location.pathname;
+
+let sb=null, currentUser=null, currentItem=null;
+let activeCategory='all', activeSub=null, sortMode='new', searchQ='';
+const VIEWS=['main-view','detail-view','add-view','profile-view','docs-view'];
+
+// =================== UI ===================
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.getElementById('dbg').classList.add('open')}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('dbg').classList.remove('open')}
+function openModal(){document.getElementById('book-modal').classList.add('open')}
+function closeModal(){document.getElementById('book-modal').classList.remove('open')}
+function goHome(){VIEWS.forEach(v=>{const el=document.getElementById(v);if(el)el.style.display=v==='main-view'?'block':'none'});window.scrollTo({top:0})}
+function showView(id){VIEWS.forEach(v=>{const el=document.getElementById(v);if(el)el.style.display=v===id?'block':'none'});window.scrollTo({top:0})}
+
+// =================== URGENCY COUNTER ===================
+(function(){
+  const el=document.getElementById('live-count');
+  if(!el)return;
+  let n=Math.floor(Math.random()*30)+30;
+  setInterval(()=>{
+    n=Math.max(20,Math.min(80,n+Math.floor(Math.random()*5)-2));
+    el.textContent=n;
+  },4000);
+})();
 
 // =================== DB ===================
 async function initDB(){
   try{
-    if(!window.supabase) throw new Error('no lib');
-    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    const{error} = await sb.from('items').select('id').limit(1);
-    if(error) throw error;
-  }catch(e){ sb=null; }
+    if(!window.supabase)throw new Error('no lib');
+    sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+    const{error}=await sb.from('items').select('id').limit(1);
+    if(error)throw error;
+  }catch(e){sb=null;}
 }
 
 // =================== HELPERS ===================
-const CAT_MAP = {
+const CAT_MAP={
   photo:'Фотоаппараты',action_cam:'Экшн-камеры',tablet:'Планшеты',portable_electronics:'Портативная электроника',
   evening_dress:'Вечерние платья',outerwear:'Верхняя одежда',sportswear:'Спортивная экипировка',
   construction_tools:'Строительный инструмент',garden_tools:'Садовый инвентарь',power_tools:'Электроинструменты',
   ski:'Горные лыжи',snowboard:'Сноуборд',multicooker:'Мультиварки',vacuum:'Пылесосы'
 };
-const CATS = [
+const CATS=[
   {id:'electronics',label:'Электроника',ico:'📷',subs:['photo','action_cam','tablet','portable_electronics']},
   {id:'clothes',label:'Одежда',ico:'👗',subs:['evening_dress','outerwear','sportswear']},
   {id:'tools',label:'Инструменты',ico:'🔧',subs:['construction_tools','garden_tools','power_tools']},
   {id:'sport',label:'Спорт',ico:'⛷️',subs:['ski','snowboard']},
   {id:'home',label:'Техника',ico:'🏠',subs:['multicooker','vacuum']},
 ];
-const DEMO = [
+const DEMO=[
   {id:'d1',title:'Canon EOS R50 + объектив 18-45mm',category:'photo',price_per_day:1200,price_per_week:7000,city:'Москва',rating:4.9,reviews:41,cover_url:'https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=500&q=80',owner_name:'Артём К.',owner_avatar:null,is_available:true,deposit:5000,description:'Идеальное состояние, использовалась бережно. В комплекте: объектив 18-45mm, 2 аккумулятора, зарядное, карта 64GB, чехол.'},
   {id:'d2',title:'GoPro Hero 12 Black',category:'action_cam',price_per_day:800,price_per_week:4500,city:'Москва',rating:4.8,reviews:33,cover_url:'https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=500&q=80',owner_name:'Мария Л.',owner_avatar:null,is_available:true,deposit:3000,description:'Снимает 5.3K. В комплекте крепления, 2 аккумулятора, чехол. Отлично для экстрима, путешествий, блогинга.'},
   {id:'d3',title:'DJI Osmo Pocket 3',category:'action_cam',price_per_day:950,price_per_week:5200,city:'СПб',rating:4.7,reviews:19,cover_url:'https://images.unsplash.com/photo-1612197527762-8cfb5566d3f7?w=500&q=80',owner_name:'Иван С.',owner_avatar:null,is_available:true,deposit:4000,description:'Стабилизированная камера с трёхосевым гимбалом. Идеальна для видеоблогов и стримов.'},
@@ -725,7 +949,7 @@ const DEMO = [
   {id:'d14',title:'Экшн-камера Insta360 X4',category:'action_cam',price_per_day:1200,price_per_week:6500,city:'Москва',rating:4.9,reviews:7,cover_url:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80',owner_name:'Рома Д.',owner_avatar:null,is_available:true,deposit:7000,description:'360° съёмка 8K. Незаменима для экстрима. В комплекте крепления, аккумуляторы, чехол.'},
 ];
 
-function showToast(msg, type='blue'){
+function showToast(msg,type='blue'){
   const t=document.getElementById('toast');
   t.textContent=msg;
   t.style.background=type==='green'?'#059669':type==='red'?'#dc2626':'#1d4ed8';
@@ -734,7 +958,6 @@ function showToast(msg, type='blue'){
   t._timer=setTimeout(()=>t.classList.remove('show'),3000);
 }
 
-// =================== CATEGORY NAV ===================
 function renderCatNav(){
   const row=document.getElementById('cat-row');
   row.innerHTML=`<button class="cat-btn${activeCategory==='all'?' active':''}" onclick="selCat('all')">🔍 Все</button>`
@@ -751,7 +974,6 @@ function renderSubNav(){
 }
 function selCat(id){activeCategory=id;activeSub=null;renderCatNav();renderFeed();}
 function selSub(s){activeSub=s;renderSubNav();renderFeed();}
-
 let sortTimer=null;
 function setSort(mode,el){
   sortMode=mode;
@@ -762,20 +984,18 @@ function setSort(mode,el){
 let searchTimer=null;
 function onSearch(v){searchQ=v;clearTimeout(searchTimer);searchTimer=setTimeout(renderFeed,300);}
 
-// =================== FETCH / RENDER FEED ===================
 async function fetchItems(){
-  if(!sb) return DEMO;
+  if(!sb)return DEMO;
   try{
     let q=sb.from('items').select('*,profiles(name,avatar_url)').eq('status','active');
-    if(activeSub) q=q.eq('category',activeSub);
+    if(activeSub)q=q.eq('category',activeSub);
     else if(activeCategory!=='all'){const cat=CATS.find(c=>c.id===activeCategory);if(cat)q=q.in('category',cat.subs);}
-    if(searchQ) q=q.ilike('title','%'+searchQ+'%');
+    if(searchQ)q=q.ilike('title','%'+searchQ+'%');
     const{data,error}=await q.limit(60);
-    if(error) throw error;
-    return (data||[]).map(i=>({...i,owner_name:i.profiles?.name||'Пользователь',owner_avatar:i.profiles?.avatar_url}));
+    if(error)throw error;
+    return(data||[]).map(i=>({...i,owner_name:i.profiles?.name||'Пользователь',owner_avatar:i.profiles?.avatar_url}));
   }catch(e){console.error(e);return DEMO;}
 }
-
 function filterItems(items){
   let list=items.filter(i=>{
     if(activeSub&&i.category!==activeSub)return false;
@@ -783,15 +1003,16 @@ function filterItems(items){
     if(searchQ&&!i.title.toLowerCase().includes(searchQ.toLowerCase()))return false;
     return true;
   });
-  if(sortMode==='price_asc') list=list.sort((a,b)=>a.price_per_day-b.price_per_day);
-  else if(sortMode==='price_desc') list=list.sort((a,b)=>b.price_per_day-a.price_per_day);
-  else if(sortMode==='rating') list=list.sort((a,b)=>(b.rating||0)-(a.rating||0));
+  if(sortMode==='price_asc')list=list.sort((a,b)=>a.price_per_day-b.price_per_day);
+  else if(sortMode==='price_desc')list=list.sort((a,b)=>b.price_per_day-a.price_per_day);
+  else if(sortMode==='rating')list=list.sort((a,b)=>(b.rating||0)-(a.rating||0));
   return list;
 }
-
 function cardHTML(i){
   const avail=i.is_available?'<span class="card-avail avail">Доступно</span>':'<span class="card-avail unavail">Занято</span>';
   const weekPrice=i.price_per_week?`<span class="price-week">${i.price_per_week.toLocaleString()} ₽/нед</span>`:'';
+  const ownerInit=i.owner_name?i.owner_name[0]:'?';
+  const ownerImg=i.owner_avatar?`<img src="${i.owner_avatar}" alt="">`:'';
   return`<article class="item-card" onclick="openDetail('${i.id}')">
     <div class="card-img" style="background-image:url('${i.cover_url||''}')">
       ${avail}
@@ -800,208 +1021,156 @@ function cardHTML(i){
     </div>
     <div class="card-body">
       <div class="card-title">${i.title}</div>
-      <div class="card-loc">📍 ${i.city}</div>
+      <div class="card-loc">📍 ${i.city||'Не указан'}</div>
       <div class="card-price-row">
         <span class="price-main">${i.price_per_day.toLocaleString()} ₽/день</span>
         ${weekPrice}
       </div>
       <div class="card-bottom">
-        <div class="card-owner">
-          <div class="owner-dot">${i.owner_avatar?`<img src="${i.owner_avatar}" alt="">`:(i.owner_name||'?')[0]}</div>
-          <span>${i.owner_name}</span>
-        </div>
-        <div class="card-rating">★ ${i.rating||'—'} <span>(${i.reviews||0})</span></div>
+        <div class="card-owner"><div class="owner-dot">${ownerImg||ownerInit}</div>${i.owner_name||'Пользователь'}</div>
+        ${i.rating?`<div class="card-rating">★ ${i.rating}<span>(${i.reviews||0})</span></div>`:''}
       </div>
     </div>
   </article>`;
 }
-
 async function renderFeed(){
   const grid=document.getElementById('feed-grid');
+  const countEl=document.getElementById('results-count');
   grid.innerHTML='<div class="feed-loading"><div class="spin-ring"></div></div>';
-  allItems=await fetchItems();
-  const filtered=filterItems(allItems);
-  document.getElementById('results-count').textContent=filtered.length+' объявлений';
-  if(!filtered.length){
-    grid.innerHTML='<div class="feed-empty"><div class="empty-ico">🔍</div><p class="empty-txt">Ничего не найдено. Попробуйте другую категорию или запрос.</p></div>';
-    return;
-  }
+  const items=await fetchItems();
+  const filtered=filterItems(items);
+  countEl.textContent=filtered.length+' объявлений';
+  if(!filtered.length){grid.innerHTML='<div class="feed-empty"><div class="empty-ico">🔍</div><div class="empty-txt">Ничего не нашлось. Попробуйте другой запрос.</div></div>';return;}
   grid.innerHTML=filtered.map(cardHTML).join('');
 }
 
 // =================== DETAIL ===================
-function openDetail(id){
-  currentItem=allItems.find(i=>String(i.id)===String(id));
-  if(!currentItem)return;
+let detailItems=[];
+async function openDetail(id){
+  const items=await fetchItems();
+  detailItems=items;
+  const item=items.find(i=>i.id===id||i.id===id);
+  if(!item)return;
+  currentItem=item;
+  document.getElementById('det-img').style.backgroundImage=`url('${item.cover_url||''}')`;
+  document.getElementById('det-avail').className='det-avail '+(item.is_available?'avail':'unavail');
+  document.getElementById('det-avail').textContent=item.is_available?'✓ Доступно сейчас':'✗ Занято';
+  document.getElementById('det-title').textContent=item.title;
+  document.getElementById('det-meta').innerHTML=`<span>📍 ${item.city||'—'}</span><span>⭐ ${item.rating||'—'} (${item.reviews||0} отзывов)</span><span>🏷️ ${CAT_MAP[item.category]||item.category}</span>`;
+  document.getElementById('det-price').textContent=item.price_per_day.toLocaleString()+' ₽/день';
+  document.getElementById('det-price-week').textContent=item.price_per_week?`${item.price_per_week.toLocaleString()} ₽/неделя`:'';
+  document.getElementById('det-deposit').innerHTML=`🔐 Залог: <strong>${(item.deposit||0).toLocaleString()} ₽</strong> — возвращается после аренды`;
+  const ava=document.getElementById('det-ava');
+  ava.innerHTML=item.owner_avatar?`<img src="${item.owner_avatar}" alt="">`:item.owner_name?.[0]||'?';
+  document.getElementById('det-owner').textContent=item.owner_name||'Пользователь';
+  document.getElementById('det-desc-text').textContent=item.description||'Описание не указано.';
+  document.getElementById('det-tags').innerHTML=['Аренда','Залог защищает','Проверка перед покупкой'].map(t=>`<span class="det-tag">${t}</span>`).join('');
+  const rentBtn=document.getElementById('rent-btn');
+  rentBtn.disabled=!item.is_available;
+  rentBtn.textContent=item.is_available?'Арендовать':'Занято — написать в лист ожидания';
   showView('detail-view');
-  const i=currentItem;
-  document.getElementById('det-img').style.backgroundImage=`url('${i.cover_url||''}')`;
-  const avail=document.getElementById('det-avail');
-  avail.textContent=i.is_available?'✓ Доступно для аренды':'✗ Сейчас занято';
-  avail.className='det-avail '+(i.is_available?'avail':'unavail');
-  document.getElementById('det-title').textContent=i.title;
-  document.getElementById('det-meta').innerHTML=`
-    <span>📍 ${i.city}</span>
-    <span style="color:var(--gold)">★ ${i.rating||'—'} (${i.reviews||0} отзывов)</span>
-    <span>${CAT_MAP[i.category]||i.category}</span>`;
-  document.getElementById('det-price').textContent=i.price_per_day.toLocaleString()+' ₽/день';
-  document.getElementById('det-price-week').textContent=i.price_per_week?(i.price_per_week.toLocaleString()+' ₽ за неделю'):'';
-  document.getElementById('det-deposit').innerHTML=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Залог: <strong>${i.deposit.toLocaleString()} ₽</strong>`;
-  const detAva=document.getElementById('det-ava');
-  detAva.innerHTML=i.owner_avatar?`<img src="${i.owner_avatar}" alt="">`:(i.owner_name||'?')[0];
-  document.getElementById('det-owner').textContent=i.owner_name;
-  document.getElementById('det-desc-text').textContent=i.description||'Хорошее состояние. Подробности уточняйте у владельца.';
-  document.getElementById('det-tags').innerHTML=[CAT_MAP[i.category],i.city,'Залог '+i.deposit.toLocaleString()+' ₽'].map(t=>`<span class="det-tag">${t}</span>`).join('');
-  const btn=document.getElementById('rent-btn');
-  btn.disabled=!i.is_available;
-  btn.textContent=i.is_available?'Арендовать':'Сейчас занято';
 }
-
 function rentItem(){
-  if(!currentUser){showToast('Войдите чтобы арендовать','red');setTimeout(yandexLogin,1500);return;}
-  if(!currentItem?.is_available)return;
-  document.getElementById('book-item-name').textContent=currentItem.title;
-  document.getElementById('book-from').value='';
+  if(!currentUser){showToast('Войдите для аренды','red');return;}
+  const today=new Date().toISOString().split('T')[0];
+  document.getElementById('book-from').value=today;
   document.getElementById('book-to').value='';
-  document.getElementById('book-total').textContent='Выберите даты для расчёта стоимости';
-  document.getElementById('book-modal').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.getElementById('book-total').textContent='';
+  openModal();
 }
-function closeBookModal(){document.getElementById('book-modal').classList.remove('open');document.body.style.overflow='';}
-
 function calcTotal(){
+  if(!currentItem)return;
   const f=document.getElementById('book-from').value;
   const t=document.getElementById('book-to').value;
-  if(!f||!t){document.getElementById('book-total').textContent='Выберите даты';return;}
-  const days=Math.ceil((new Date(t)-new Date(f))/86400000);
+  if(!f||!t)return;
+  const days=Math.round((new Date(t)-new Date(f))/(1000*60*60*24));
   if(days<=0){document.getElementById('book-total').textContent='Дата окончания должна быть позже начала';return;}
-  const price=currentItem.price_per_day*days;
-  const total=price+currentItem.deposit;
-  document.getElementById('book-total').textContent=`${days} дн × ${currentItem.price_per_day.toLocaleString()} ₽ = ${price.toLocaleString()} ₽\nЗалог: ${currentItem.deposit.toLocaleString()} ₽ (возврат после сделки)\nИтого к оплате: ${total.toLocaleString()} ₽`;
+  const total=days*currentItem.price_per_day;
+  document.getElementById('book-total').textContent=`${days} дн. × ${currentItem.price_per_day.toLocaleString()} ₽ = ${total.toLocaleString()} ₽ + залог ${(currentItem.deposit||0).toLocaleString()} ₽`;
 }
-
-async function confirmBook(){
+async function submitBooking(){
   const f=document.getElementById('book-from').value;
   const t=document.getElementById('book-to').value;
-  const msg=document.getElementById('book-msg').value;
-  if(!f||!t){showToast('Выберите даты','red');return;}
+  const comment=document.getElementById('book-comment').value;
+  if(!f||!t){showToast('Укажите даты','red');return;}
   const btn=document.getElementById('book-btn');
   btn.disabled=true;btn.innerHTML='<span class="spin-sm"></span>Отправляем...';
-  if(!sb){
-    setTimeout(()=>{closeBookModal();showToast('✅ Заявка отправлена! Владелец свяжется с вами','green');btn.disabled=false;btn.textContent='Отправить заявку';},700);
-    return;
-  }
   try{
-    const{error}=await sb.from('bookings').insert({item_id:currentItem.id,renter_id:currentUser.id,date_from:f,date_to:t,message:msg,status:'pending'});
-    if(error)throw error;
-    closeBookModal();showToast('✅ Заявка отправлена!','green');
+    if(sb&&currentUser?.id){
+      await sb.from('bookings').insert({item_id:currentItem.id,renter_id:currentUser.id,date_from:f,date_to:t,comment,status:'pending'});
+    }
+    showToast('✅ Заявка отправлена! Арендодатель ответит вам скоро.','green');
+    closeModal();
   }catch(e){showToast('Ошибка: '+e.message,'red');}
   finally{btn.disabled=false;btn.textContent='Отправить заявку';}
 }
 
-// =================== ADD ===================
+// =================== ADD ITEM ===================
 function openAddItem(){
-  if(!currentUser){showToast('Войдите чтобы разместить','red');setTimeout(yandexLogin,1500);return;}
+  if(!currentUser){showToast('Войдите чтобы размещать объявления','red');showView('profile-view');showProfile();return;}
   showView('add-view');
 }
 async function submitItem(e){
   e.preventDefault();
   const btn=document.getElementById('add-btn');
-  btn.disabled=true;btn.innerHTML='<span class="spin-sm"></span>Размещаем...';
+  btn.disabled=true;btn.innerHTML='<span class="spin-sm"></span>Публикуем...';
   const data={
     title:document.getElementById('add-title').value,
     category:document.getElementById('add-cat').value,
     city:document.getElementById('add-city').value,
-    price_per_day:parseInt(document.getElementById('add-price-day').value),
-    price_per_week:document.getElementById('add-price-week').value?parseInt(document.getElementById('add-price-week').value):null,
-    deposit:parseInt(document.getElementById('add-deposit').value),
-    description:document.getElementById('add-desc').value||null,
+    price_per_day:+document.getElementById('add-price-day').value,
+    price_per_week:+document.getElementById('add-price-week').value||null,
+    deposit:+document.getElementById('add-deposit').value,
     cover_url:document.getElementById('add-img').value||null,
-    status:'active',owner_id:currentUser?.id,rating:0,reviews:0,is_available:true
+    description:document.getElementById('add-desc').value,
+    status:'active',is_available:true,
+    owner_id:currentUser?.id||null
   };
-  if(!sb){setTimeout(()=>{goHome();showToast('✅ Объявление размещено (демо)','green');btn.disabled=false;btn.textContent='Разместить объявление';},600);return;}
   try{
-    const{error}=await sb.from('items').insert(data);
-    if(error)throw error;
-    goHome();showToast('✅ Объявление размещено!','green');renderFeed();
-  }catch(e){showToast('Ошибка: '+e.message,'red');}
+    if(sb&&currentUser?.id){await sb.from('items').insert(data);}
+    showToast('✅ Объявление опубликовано!','green');
+    e.target.reset();goHome();renderFeed();
+  }catch(err){showToast('Ошибка: '+err.message,'red');}
   finally{btn.disabled=false;btn.textContent='Разместить объявление';}
 }
 
 // =================== PROFILE ===================
-function showProfile(){
-  closeDrawer();showView('profile-view');renderProfile();
-}
-function renderProfile(){
-  const na=document.getElementById('pf-no-auth'),au=document.getElementById('pf-auth');
-  if(!currentUser){na.style.display='block';au.style.display='none';return;}
-  na.style.display='none';au.style.display='block';
-  document.getElementById('pf-name').textContent=currentUser.name||'—';
+async function showProfile(){
+  showView('profile-view');
+  const noAuth=document.getElementById('pf-no-auth');
+  const auth=document.getElementById('pf-auth');
+  if(!currentUser){noAuth.style.display='block';auth.style.display='none';return;}
+  noAuth.style.display='none';auth.style.display='block';
+  document.getElementById('pf-ava').innerHTML=currentUser.avatar_url?`<img src="${currentUser.avatar_url}" alt="">`:currentUser.name?.[0]||'?';
+  document.getElementById('pf-name').textContent=currentUser.name||'Пользователь';
   document.getElementById('pf-email').textContent=currentUser.email||'';
-  const ava=document.getElementById('pf-ava');
-  ava.innerHTML=currentUser.avatar_url?`<img src="${currentUser.avatar_url}" alt="">`:(currentUser.name||'?')[0];
-  loadMyItems();loadMyBookings();
+  if(sb&&currentUser.id){
+    const{data:myItems}=await sb.from('items').select('*').eq('owner_id',currentUser.id).order('created_at',{ascending:false}).limit(10);
+    const{data:myBookings}=await sb.from('bookings').select('*,items(title)').eq('renter_id',currentUser.id).order('created_at',{ascending:false}).limit(10);
+    document.getElementById('pf-items-count').textContent=myItems?.length||0;
+    document.getElementById('pf-bookings-count').textContent=myBookings?.length||0;
+    document.getElementById('pf-items-list').innerHTML=(myItems?.length?myItems.map(i=>`<div class="my-item"><div class="mi-img" style="background-image:url('${i.cover_url||''}')"></div><div class="mi-info"><div class="mi-title">${i.title}</div><div class="mi-price">${i.price_per_day.toLocaleString()} ₽/день · ${i.is_available?'Доступно':'Занято'}</div></div></div>`).join(''):'<div style="font-size:13px;color:var(--muted);padding:16px 0">У вас пока нет объявлений</div>');
+    document.getElementById('pf-bookings-list').innerHTML=(myBookings?.length?myBookings.map(b=>`<div class="booking-item"><div class="bi-info"><div class="bi-title">${b.items?.title||'Вещь'}</div><div class="bi-dates">${b.date_from} — ${b.date_to}</div><span class="bi-status ${b.status}">${{pending:'На рассмотрении',approved:'Подтверждено',declined:'Отклонено'}[b.status]||b.status}</span></div></div>`).join(''):'<div style="font-size:13px;color:var(--muted);padding:16px 0">У вас пока нет заявок</div>');
+  }
 }
-async function loadMyItems(){
-  const el=document.getElementById('my-items');
-  if(!sb||!currentUser){el.innerHTML='<p class="empty-hint">В демо-режиме недоступно</p>';return;}
-  try{
-    const{data,error}=await sb.from('items').select('*').eq('owner_id',currentUser.id).order('created_at',{ascending:false});
-    if(error)throw error;
-    document.getElementById('pf-items-count').textContent=data?.length||0;
-    if(!data?.length){el.innerHTML='<p class="empty-hint">Объявлений нет. <a style="color:var(--accent);cursor:pointer" onclick="openAddItem()">Разместить первое →</a></p>';return;}
-    el.innerHTML=data.map(i=>`<div class="my-item">
-      <div class="mi-img" style="background-image:url('${i.cover_url||''}')"></div>
-      <div class="mi-info"><div class="mi-title">${i.title}</div><div class="mi-price">${i.price_per_day.toLocaleString()} ₽/день</div></div>
-      <span class="card-avail ${i.is_available?'avail':'unavail'}" style="position:static;padding:3px 10px">${i.is_available?'Активно':'Занято'}</span>
-    </div>`).join('');
-  }catch(e){el.innerHTML='<p style="color:var(--red);font-size:13px">Ошибка загрузки</p>';}
-}
-async function loadMyBookings(){
-  const el=document.getElementById('my-bookings');
-  if(!sb||!currentUser){el.innerHTML='<p class="empty-hint">В демо-режиме недоступно</p>';return;}
-  try{
-    const{data,error}=await sb.from('bookings').select('*,items(title,price_per_day)').eq('renter_id',currentUser.id).order('created_at',{ascending:false}).limit(10);
-    if(error)throw error;
-    document.getElementById('pf-bookings-count').textContent=data?.length||0;
-    if(!data?.length){el.innerHTML='<p class="empty-hint">Заявок на аренду нет</p>';return;}
-    const labels={pending:'На рассмотрении',confirmed:'Подтверждено',rejected:'Отклонено',completed:'Завершено'};
-    const cls={pending:'sp-pending',confirmed:'sp-confirmed',rejected:'sp-rejected',completed:'sp-completed'};
-    el.innerHTML=data.map(b=>`<div class="booking-item">
-      <div class="bi-info"><div class="bi-title">${b.items?.title||'—'}</div><div class="bi-dates">${b.date_from} → ${b.date_to}</div></div>
-      <span class="status-pill ${cls[b.status]||'sp-pending'}">${labels[b.status]||b.status}</span>
-    </div>`).join('');
-  }catch(e){el.innerHTML='<p style="color:var(--red);font-size:13px">Ошибка загрузки</p>';}
-}
-
-// =================== VIEWS ===================
-const VIEWS=['main-view','detail-view','add-view','profile-view','docs-view'];
-function showView(id){VIEWS.forEach(v=>{const el=document.getElementById(v);if(el)el.style.display=v===id?'block':'none';});window.scrollTo({top:0,behavior:'smooth'});}
-function goHome(){showView('main-view');}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDrawer();closeBookModal();}});
-
-// =================== DRAWER ===================
-function openDrawer(){document.getElementById('drawer').classList.add('open');document.getElementById('dbg').classList.add('open');document.body.style.overflow='hidden';}
-function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('dbg').classList.remove('open');document.body.style.overflow='';}
 
 // =================== DOCS ===================
 const DOCS_CONTENT={
-  how:{title:'Как это работает',html:`<h2>Для арендаторов</h2><p>1. Найдите нужную вещь в каталоге — используйте фильтры по категории, городу и цене.</p><p>2. Откройте карточку товара, ознакомьтесь с условиями и оставьте заявку с указанием дат.</p><p>3. Владелец рассматривает заявку и подтверждает аренду. После этого договариваетесь о передаче.</p><p>4. Верните вещь в указанный срок — залог возвращается после проверки состояния.</p><h2>Для арендодателей</h2><p>1. Разместите объявление с фото, описанием и условиями аренды.</p><p>2. Получайте заявки и выбирайте надёжных арендаторов по рейтингу и отзывам.</p><p>3. Залог защищает от порчи — устанавливайте его самостоятельно.</p><p>4. Зарабатывайте на вещах, которые простаивают дома.</p>`},
-  safety:{title:'Безопасность сделок',html:`<h2>Как мы защищаем участников</h2><p>Залог — ключевой инструмент защиты. Арендодатель устанавливает размер залога, арендатор вносит его при получении вещи и возвращает после её возврата.</p><h2>Верификация пользователей</h2><p>Авторизация через Яндекс ID обеспечивает базовую верификацию. Все пользователи имеют рейтинг на основе отзывов.</p><h2>Рекомендации</h2><ul><li>Проверяйте рейтинг и отзывы пользователя перед сделкой</li><li>Фотографируйте состояние вещи при передаче и возврате</li><li>Составляйте акт приёма-передачи для дорогих вещей</li><li>Не проводите сделки вне платформы</li></ul>`},
-  privacy:{title:'Политика конфиденциальности',html:`<h2>1. Общие положения</h2><p>BoomeranGO собирает и обрабатывает персональные данные пользователей в соответствии с ФЗ №152-ФЗ «О персональных данных».</p><h2>2. Состав данных</h2><p>Имя, email, фото профиля, идентификатор Яндекс ID, история аренды и размещённые объявления.</p><h2>3. Цели обработки</h2><p>Обеспечение работы платформы, верификация пользователей, поддержка безопасных сделок, маркетинговые коммуникации с согласия пользователя.</p><h2>4. Контакты</h2><p>По вопросам обработки данных: support@boomerango.ru</p>`},
-  terms:{title:'Пользовательское соглашение',html:`<h2>1. Предмет соглашения</h2><p>BoomeranGO предоставляет платформу для организации аренды между физическими и юридическими лицами.</p><h2>2. Права и обязанности</h2><p>Пользователи обязаны предоставлять достоверную информацию об объявлениях, соблюдать условия сделки и не нарушать права третьих лиц.</p><h2>3. Ответственность</h2><p>BoomeranGO не является стороной сделки и не несёт ответственности за действия участников. Платформа предоставляет инструменты, но контроль за исполнением возлагается на участников.</p><h2>4. Разрешение споров</h2><p>Споры разрешаются путём переговоров. При недостижении соглашения — в судебном порядке.</p>`},
-  consent:{title:'Согласие на обработку персональных данных',html:`<p>Регистрируясь на платформе BoomeranGO, вы даёте согласие на обработку следующих персональных данных: имя, email, фото, идентификатор Яндекс.</p><h2>Цели обработки</h2><ul><li>Авторизация и идентификация пользователя</li><li>Обеспечение работы личного кабинета</li><li>Организация сделок аренды</li><li>Получение уведомлений о заявках</li></ul><p>Согласие может быть отозвано путём удаления аккаунта или обращения в поддержку.</p>`}
+  how:{title:'Как это работает',html:`<h2>Для арендаторов</h2><p>1. Найдите вещь по категории или поиску. 2. Напишите арендодателю и договоритесь о встрече. 3. Внесите залог — он защищает обе стороны. 4. Пользуйтесь вещью, верните в срок и получите залог обратно.</p><h2>Для арендодателей</h2><p>1. Разместите объявление — это бесплатно. 2. Укажите залог — это ваша защита. 3. Принимайте заявки и зарабатывайте на простаивающих вещах.</p><h2>Главная суперсила</h2><p>BoomeranGO — единственная платформа, где вы можете проверить любую вещь перед покупкой. Арендуйте на день-два и поймите, нужна ли она вам.</p>`},
+  safety:{title:'Безопасность',html:`<h2>Залог</h2><p>Каждая сделка сопровождается залогом — он защищает арендодателя от порчи или потери вещи, и возвращается арендатору после аренды в полном объёме.</p><h2>Рейтинги</h2><p>Все пользователи накапливают рейтинг. Чем больше успешных сделок, тем выше доверие к участнику.</p><h2>Верификация</h2><p>Пользователи входят через Яндекс ID — это гарантирует реальность личности.</p>`},
+  privacy:{title:'Политика конфиденциальности',html:`<p>BoomeranGO собирает только необходимые данные: имя, email и идентификатор Яндекс. Мы не передаём данные третьим лицам без вашего согласия.</p>`},
+  terms:{title:'Пользовательское соглашение',html:`<h2>1. Предмет соглашения</h2><p>BoomeranGO предоставляет платформу для организации аренды между физическими и юридическими лицами.</p><h2>2. Ответственность</h2><p>BoomeranGO не является стороной сделки. Платформа предоставляет инструменты, контроль за исполнением возлагается на участников.</p>`},
+  consent:{title:'Согласие на обработку персональных данных',html:`<p>Регистрируясь на платформе BoomeranGO, вы даёте согласие на обработку следующих персональных данных: имя, email, фото, идентификатор Яндекс.</p>`}
 };
 function showDocs(key){
   closeDrawer();
-  VIEWS.forEach(v=>{const el=document.getElementById(v);if(el)el.style.display=v==='docs-view'?'block':'none';});
+  showView('docs-view');
   document.querySelectorAll('.dlnk').forEach(l=>l.classList.remove('active'));
   const lnk=document.getElementById('dlnk-'+key);
   if(lnk)lnk.classList.add('active');
   const doc=DOCS_CONTENT[key];
   if(!doc){document.getElementById('docs-body').innerHTML='<p>Документ не найден</p>';return;}
   document.getElementById('docs-body').innerHTML=`<h1>${doc.title}</h1><div class="docs-date">BoomeranGO · 2026</div>${doc.html}`;
-  window.scrollTo({top:0});
 }
 
 // =================== AUTH ===================
@@ -1015,9 +1184,7 @@ function yandexLogin(){
 function yandexLogout(){
   if(!confirm('Выйти из аккаунта?'))return;
   localStorage.removeItem('bmgo_sess');
-  currentUser=null;
-  renderAuthUI();
-  goHome();
+  currentUser=null;renderAuthUI();goHome();
 }
 async function handleYandexCallback(){
   const hash=window.location.hash;
@@ -1039,10 +1206,8 @@ async function loginWithToken(token){
     if(!sb){
       currentUser={id:null,name:ya.real_name||ya.login,email:ya.default_email,avatar_url:avatarUrl,yandex_id:ya.id};
       localStorage.setItem('bmgo_sess',JSON.stringify({demo:true,user:currentUser}));
-      showToast('✅ Вошли как '+currentUser.name,'green');
-      renderAuthUI();return;
+      showToast('✅ Вошли как '+currentUser.name,'green');renderAuthUI();return;
     }
-    showToast('⏳ Загружаем профиль...');
     const{data:ex}=await sb.from('profiles').select('*').eq('yandex_id',String(ya.id)).maybeSingle();
     let profile;
     if(ex){
@@ -1055,8 +1220,7 @@ async function loginWithToken(token){
     }
     currentUser={...profile,yandex_token:token};
     localStorage.setItem('bmgo_sess',JSON.stringify({token,profile_id:profile.id}));
-    showToast('✅ Добро пожаловать, '+profile.name,'green');
-    renderAuthUI();
+    showToast('✅ Добро пожаловать, '+profile.name,'green');renderAuthUI();
   }catch(e){showToast('❌ Ошибка входа: '+e.message,'red');renderAuthUI();}
 }
 async function restoreSession(){
@@ -1098,7 +1262,7 @@ function renderAuthUI(){
   renderCatNav();
   await initDB();
   await restoreSession();
-  const fromYa=await handleYandexCallback();
+  await handleYandexCallback();
   renderFeed();
 })();
 </script>
