@@ -400,6 +400,21 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .hcp-chip{padding:5px 12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:999px;font-size:11px;font-weight:600;color:rgba(255,255,255,.8);cursor:pointer;transition:.15s;white-space:nowrap}
 .hcp-chip:hover{background:rgba(255,107,0,.25);border-color:var(--accent);color:#fff}
 
+
+/* UPLOAD */
+.upload-area{border:2px dashed var(--border);border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:.2s;background:var(--bg);margin-bottom:10px}
+.upload-area:hover{border-color:var(--accent);background:var(--accent-lt)}
+.upload-icon{font-size:32px;margin-bottom:8px}
+.upload-text{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.upload-sub{font-size:12px;color:var(--muted)}
+.photo-previews{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.photo-thumb{width:72px;height:72px;border-radius:10px;object-fit:cover;border:2px solid var(--border);position:relative;cursor:pointer}
+.photo-thumb-wrap{position:relative;flex-shrink:0}
+.photo-thumb-wrap .rm{position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;line-height:1}
+.upload-bar{height:6px;background:var(--border);border-radius:999px;overflow:hidden;margin-bottom:4px}
+.upload-bar-fill{height:100%;background:var(--accent);border-radius:999px;transition:width .2s;width:0%}
+.upload-pct{font-size:12px;color:var(--muted);text-align:center}
+
 </style>
 </head>
 <body>
@@ -740,8 +755,18 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
             <input id="add-deposit" class="finput" type="number" placeholder="5 000" min="0" required>
           </div>
           <div class="frow">
-            <label class="flabel">Фото товара (URL)</label>
-            <input id="add-img" class="finput" type="url" placeholder="https://...">
+            <label class="flabel">Фото товара *</label>
+            <div class="upload-area" id="upload-area" onclick="document.getElementById('add-img-file').click()">
+              <div class="upload-icon">📷</div>
+              <div class="upload-text">Нажмите чтобы выбрать фото</div>
+              <div class="upload-sub">JPG, PNG, WebP до 10 МБ</div>
+              <input id="add-img-file" type="file" accept="image/*" multiple style="display:none" onchange="previewPhotos(this)">
+            </div>
+            <div class="photo-previews" id="photo-previews"></div>
+            <div class="upload-progress" id="upload-progress" style="display:none">
+              <div class="upload-bar"><div class="upload-bar-fill" id="upload-bar-fill"></div></div>
+              <div class="upload-pct" id="upload-pct">Загружаем...</div>
+            </div>
           </div>
           <div class="frow">
             <label class="flabel">Описание</label>
@@ -1061,32 +1086,110 @@ async function submitBooking(){
 }
 
 // =================== ADD ITEM ===================
+let uploadedPhotoUrls = []; // сюда складываем URL после загрузки в storage
+
 function openAddItem(){
   if(!currentUser){showToast('Войдите чтобы размещать объявления','red');showView('profile-view');showProfile();return;}
+  uploadedPhotoUrls=[];
+  document.getElementById('photo-previews').innerHTML='';
+  document.getElementById('upload-progress').style.display='none';
   showView('add-view');
 }
+
+function previewPhotos(input){
+  const files=[...input.files];
+  if(!files.length)return;
+  const wrap=document.getElementById('photo-previews');
+  files.forEach((file,i)=>{
+    const url=URL.createObjectURL(file);
+    const div=document.createElement('div');
+    div.className='photo-thumb-wrap';
+    div.innerHTML=`<img class="photo-thumb" src="${url}"><div class="rm" onclick="removePhoto(this,'${url}')">×</div>`;
+    div.dataset.file=i;
+    wrap.appendChild(div);
+  });
+  // Обновляем upload-area текст
+  document.querySelector('.upload-text').textContent=`Выбрано ${files.length} фото`;
+}
+
+function removePhoto(btn, url){
+  btn.closest('.photo-thumb-wrap').remove();
+  const remaining=document.querySelectorAll('.photo-thumb-wrap').length;
+  document.querySelector('.upload-text').textContent=remaining?`Выбрано ${remaining} фото`:'Нажмите чтобы выбрать фото';
+}
+
+async function uploadPhotosToStorage(files){
+  if(!sb||!files.length)return [];
+  const urls=[];
+  const prog=document.getElementById('upload-progress');
+  const bar=document.getElementById('upload-bar-fill');
+  const pct=document.getElementById('upload-pct');
+  prog.style.display='block';
+  for(let i=0;i<files.length;i++){
+    const file=files[i];
+    const ext=file.name.split('.').pop().toLowerCase()||'jpg';
+    const path=`${currentUser.id}/${Date.now()}_${i}.${ext}`;
+    pct.textContent=`Загружаем фото ${i+1} из ${files.length}...`;
+    bar.style.width=((i/files.length)*80)+'%';
+    try{
+      const{data,error}=await sb.storage.from('item-photos').upload(path,file,{upsert:true,contentType:file.type});
+      if(error)throw error;
+      const{data:pubData}=sb.storage.from('item-photos').getPublicUrl(path);
+      urls.push(pubData.publicUrl);
+    }catch(err){
+      showToast('Ошибка загрузки фото: '+err.message,'red');
+    }
+  }
+  bar.style.width='100%';
+  pct.textContent='Готово!';
+  setTimeout(()=>{prog.style.display='none';bar.style.width='0%';},1200);
+  return urls;
+}
+
 async function submitItem(e){
   e.preventDefault();
   const btn=document.getElementById('add-btn');
-  btn.disabled=true;btn.innerHTML='<span class="spin-sm"></span>Публикуем...';
-  const data={
-    title:document.getElementById('add-title').value,
-    category:document.getElementById('add-cat').value,
-    city:document.getElementById('add-city').value,
-    price_per_day:+document.getElementById('add-price-day').value,
-    price_per_week:+document.getElementById('add-price-week').value||null,
-    deposit:+document.getElementById('add-deposit').value,
-    cover_url:document.getElementById('add-img').value||null,
-    description:document.getElementById('add-desc').value,
-    status:'active',is_available:true,
-    owner_id:currentUser?.id||null
-  };
+  btn.disabled=true;btn.innerHTML='<span class="spin-sm"></span>Загружаем фото...';
   try{
-    if(sb&&currentUser?.id){await sb.from('items').insert(data);}
+    // 1. Загружаем фото в Storage
+    const fileInput=document.getElementById('add-img-file');
+    const files=[...fileInput.files];
+    let photoUrls=[];
+    if(sb&&files.length){
+      photoUrls=await uploadPhotosToStorage(files);
+    }
+    btn.innerHTML='<span class="spin-sm"></span>Публикуем...';
+    // 2. Сохраняем объявление в БД
+    const data={
+      title:document.getElementById('add-title').value,
+      category:document.getElementById('add-cat').value,
+      city:document.getElementById('add-city').value,
+      price_per_day:+document.getElementById('add-price-day').value,
+      price_per_week:+document.getElementById('add-price-week').value||null,
+      deposit:+document.getElementById('add-deposit').value,
+      cover_url:photoUrls[0]||null,        // первое фото — обложка
+      images:photoUrls,                    // все фото
+      description:document.getElementById('add-desc').value,
+      status:'active',is_available:true,
+      owner_id:currentUser?.id||null
+    };
+    if(sb&&currentUser?.id){
+      const{error}=await sb.from('items').insert(data);
+      if(error)throw error;
+    }
     showToast('✅ Объявление опубликовано!','green');
-    e.target.reset();goHome();renderFeed();
-  }catch(err){showToast('Ошибка: '+err.message,'red');}
-  finally{btn.disabled=false;btn.textContent='Разместить объявление';}
+    e.target.reset();
+    document.getElementById('photo-previews').innerHTML='';
+    document.querySelector('.upload-text').textContent='Нажмите чтобы выбрать фото';
+    uploadedPhotoUrls=[];
+    goHome();
+    // Сбрасываем кэш и перезагружаем ленту
+    setTimeout(renderFeed,400);
+  }catch(err){
+    showToast('Ошибка: '+err.message,'red');
+  }finally{
+    btn.disabled=false;btn.textContent='Разместить объявление';
+  }
 }
 
 // =================== PROFILE ===================
