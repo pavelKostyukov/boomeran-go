@@ -107,7 +107,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .hcp-badge{position:absolute;top:8px;left:8px;padding:3px 10px;background:#dcfce7;color:#15803d;border-radius:999px;font-size:10px;font-weight:700}
 .hcp-badge-try{position:absolute;top:8px;right:8px;padding:3px 10px;background:rgba(232,92,0,.9);color:#fff;border-radius:999px;font-size:10px;font-weight:700}
 .hcp-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
-.hcp-price{color:var(--accent);font-weight:700;font-size:14px}
+.hcp-price{color:#16a34a;font-weight:800;font-size:15px}
 .hcp-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
 .hcp-meta{font-size:11px;color:rgba(255,255,255,.45)}
 .hero-mini-cards{display:flex;gap:10px}
@@ -226,7 +226,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .card-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:6px;line-height:1.3}
 .card-loc{font-size:11px;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:4px}
 .card-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
-.price-main{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--accent)}
+.price-main{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#16a34a}
 .price-week{font-size:11px;color:var(--muted)}
 .card-bottom{display:flex;align-items:center;justify-content:space-between}
 .card-owner{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--txt2)}
@@ -260,7 +260,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .det-title{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;line-height:1.2}
 .det-meta{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-bottom:20px;flex-wrap:wrap}
 .det-meta span{display:flex;align-items:center;gap:4px}
-.det-price-big{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--accent);margin-bottom:4px}
+.det-price-big{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:#16a34a;margin-bottom:4px}
 .det-price-week{font-size:13px;color:var(--muted);margin-bottom:10px}
 .det-deposit{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg);border-radius:10px;font-size:13px;color:var(--txt2);margin-bottom:10px}
 .det-deposit strong{color:var(--text)}
@@ -374,6 +374,26 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;cursor:pointer;transition:.12s}
 .footer-col a:hover{color:#fff}
 .footer-bottom{max-width:1320px;margin:0 auto;padding:20px 0;border-top:1px solid rgba(255,255,255,.08);display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.3)}
+
+/* TBYB STRIP */
+.tbyb-strip{background:#fff;border-bottom:1px solid var(--border);padding:0 20px}
+.tbyb-strip-inner{max-width:1320px;margin:0 auto;padding:28px 0 24px}
+.tbyb-strip-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:20px;flex-wrap:wrap}
+.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.tbyb-strip-title{font-family:'Syne',sans-serif;font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--text)}
+.tbyb-strip-title em{color:var(--accent);font-style:normal}
+.tbyb-strip-sub{font-size:13px;color:var(--txt2);max-width:320px;line-height:1.5;flex-shrink:0}
+.tbyb-scroll{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.tbyb-scroll::-webkit-scrollbar{display:none}
+.tbyb-item{flex-shrink:0;width:160px;border-radius:14px;overflow:hidden;border:1.5px solid var(--border);background:var(--card);cursor:pointer;transition:all .2s;position:relative}
+.tbyb-item:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 24px rgba(255,107,0,.15)}
+.tbyb-item img{width:100%;height:110px;object-fit:cover;display:block}
+.tbyb-item-body{padding:10px 12px 12px}
+.tbyb-item-badge{display:inline-block;font-size:10px;font-weight:700;color:var(--accent);background:var(--accent-lt);border-radius:999px;padding:2px 8px;margin-bottom:4px}
+.tbyb-item-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.2}
+.tbyb-item-price{font-size:13px;font-weight:800;color:#16a34a;margin-bottom:2px}
+.tbyb-item-vs{font-size:10px;color:var(--muted);line-height:1.3}
+
 </style>
 </head>
 <body>
@@ -468,6 +488,82 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
           <div class="hmc"><div class="hmc-icon">🔍</div><div class="hmc-label">Попробуй до покупки</div></div>
           <div class="hmc"><div class="hmc-icon">⭐</div><div class="hmc-label">Рейтинг арендодателей</div></div>
           <div class="hmc"><div class="hmc-icon">♻️</div><div class="hmc-label">Вещи живут дольше</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ПОПРОБУЙ ПЕРЕД ПОКУПКОЙ -->
+  <section class="tbyb-strip" id="tbyb-section">
+    <div class="tbyb-strip-inner">
+      <div class="tbyb-strip-head">
+        <div>
+          <div class="section-eyebrow">Главная суперсила BoomeranGO</div>
+          <h2 class="tbyb-strip-title">Проверь любую вещь <em>перед покупкой</em></h2>
+        </div>
+        <p class="tbyb-strip-sub">Зачем платить 60 000 ₽, если можно взять на выходные за 1 200 ₽ и убедиться — твоё?</p>
+      </div>
+      <div class="tbyb-scroll">
+        <div class="tbyb-item" onclick="selCat('electronics');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=360&q=80" alt="Камера">
+          <div class="tbyb-item-body">
+            <div class="tbyb-item-badge">🔥 хит</div>
+            <div class="tbyb-item-name">Фотокамера</div>
+            <div class="tbyb-item-price">от 800 ₽/день</div>
+            <div class="tbyb-item-vs">vs. покупка от 40 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-item" onclick="selCat('tools');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=360&q=80" alt="Шуруповёрт">
+          <div class="tbyb-item-body">
+            <div class="tbyb-item-name">Электроинструмент</div>
+            <div class="tbyb-item-price">от 350 ₽/день</div>
+            <div class="tbyb-item-vs">vs. покупка от 8 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-item" onclick="selCat('home');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=360&q=80" alt="Dyson">
+          <div class="tbyb-item-body">
+            <div class="tbyb-item-badge">💸 дорогой</div>
+            <div class="tbyb-item-name">Dyson пылесос</div>
+            <div class="tbyb-item-price">от 400 ₽/день</div>
+            <div class="tbyb-item-vs">vs. покупка от 35 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-item" onclick="selCat('sport');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img src="https://images.unsplash.com/photo-1547234935-80c7145ec969?w=360&q=80" alt="Лыжи">
+          <div class="tbyb-item-body">
+            <div class="tbyb-item-name">Горные лыжи</div>
+            <div class="tbyb-item-price">от 700 ₽/день</div>
+            <div class="tbyb-item-vs">vs. покупка от 25 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-item" onclick="selCat('electronics');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=360&q=80" alt="iPad">
+          <div class="tbyb-item-body">
+            <div class="tbyb-item-badge">💸 дорогой</div>
+            <div class="tbyb-item-name">iPad Pro</div>
+            <div class="tbyb-item-price">от 1 000 ₽/день</div>
+            <div class="tbyb-item-vs">vs. покупка от 60 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-item" onclick="selCat('clothes');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=360&q=80" alt="Canada Goose">
+          <div class="tbyb-item-body">
+            <div class="tbyb-item-badge">💸 дорогой</div>
+            <div class="tbyb-item-name">Canada Goose</div>
+            <div class="tbyb-item-price">от 800 ₽/день</div>
+            <div class="tbyb-item-vs">vs. покупка от 60 000 ₽</div>
+          </div>
+        </div>
+        <div class="tbyb-item" onclick="selCat('electronics');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
+          <img src="https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=360&q=80" alt="GoPro">
+          <div class="tbyb-item-body">
+            <div class="tbyb-item-name">GoPro Hero 12</div>
+            <div class="tbyb-item-price">от 800 ₽/день</div>
+            <div class="tbyb-item-vs">vs. покупка от 28 000 ₽</div>
+          </div>
         </div>
       </div>
     </div>
@@ -838,7 +934,7 @@ let searchTimer=null;
 function onSearch(v){searchQ=v;clearTimeout(searchTimer);searchTimer=setTimeout(renderFeed,300);}
 
 async function fetchItems(){
-  if(!sb)return DEMO;
+  if(!sb)return [...DEMO];
   try{
     let q=sb.from('items').select('*,profiles(name,avatar_url)').eq('status','active');
     if(activeSub)q=q.eq('category',activeSub);
