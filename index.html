@@ -81,7 +81,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 /* ── HERO ── */
 .hero{background:#18160f;padding:0 20px;overflow:hidden;position:relative}
 .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 100% at 65% 50%,rgba(232,92,0,.22) 0%,transparent 70%)}
-.hero-inner{max-width:1320px;margin:0 auto;padding:52px 0 44px;display:grid;grid-template-columns:1fr 480px;gap:40px;align-items:center;position:relative;z-index:1}
+.hero-inner{max-width:1320px;margin:0 auto;padding:32px 0 28px;display:grid;grid-template-columns:1fr 480px;gap:40px;align-items:center;position:relative;z-index:1}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:12px;color:rgba(255,255,255,.6);margin-bottom:20px;font-weight:600;letter-spacing:.04em}
 .hero-tag span{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block;animation:pulse 1.8s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
@@ -441,7 +441,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
           <div class="utp-pill"><span class="ico">🔐</span>Залог защищает всех</div>
         </div>
         <div class="hero-ctas">
-          <button class="hero-cta-main" onclick="document.getElementById('tbyb-section').scrollIntoView({behavior:'smooth'})">Проверить перед покупкой</button>
+          <button class="hero-cta-main" onclick="document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">Проверить перед покупкой</button>
           <button class="hero-cta-sec" onclick="openAddItem()">Сдать вещь</button>
         </div>
         <div class="hero-stats">
@@ -468,153 +468,6 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
           <div class="hmc"><div class="hmc-icon">🔍</div><div class="hmc-label">Попробуй до покупки</div></div>
           <div class="hmc"><div class="hmc-icon">⭐</div><div class="hmc-label">Рейтинг арендодателей</div></div>
           <div class="hmc"><div class="hmc-icon">♻️</div><div class="hmc-label">Вещи живут дольше</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- URGENCY BANNER -->
-  <div class="urgency">
-    <div class="urgency-inner">
-      <span style="font-size:18px">🔥</span>
-      <span class="urgency-text">Сейчас онлайн арендуют:</span>
-      <span class="urgency-count" id="live-count">47</span>
-      <span class="urgency-text">человек. Лучшие вещи разбирают быстро!</span>
-      <button class="urgency-cta" onclick="document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">Смотреть →</button>
-    </div>
-  </div>
-
-  <!-- TRY BEFORE YOU BUY -->
-  <section class="tbyb" id="tbyb-section">
-    <div class="tbyb-inner">
-      <div class="section-eyebrow">Главная суперсила BoomeranGO</div>
-      <h2 class="section-title">Проверь любую вещь<br><em>перед покупкой</em></h2>
-      <p class="section-sub">Зачем тратить 50 000 ₽ на камеру, если можно взять её на выходные за 1 200 ₽ и понять — твоё это или нет? Умные покупки начинаются с аренды.</p>
-      <div class="tbyb-grid">
-        <div class="tbyb-card" onclick="selCat('electronics');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
-          <img class="tbyb-img" src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400&q=80" alt="Камера">
-          <div class="tbyb-badge">хит проверок</div>
-          <div class="tbyb-body">
-            <div class="tbyb-cat">Фотоаппараты</div>
-            <div class="tbyb-name">Canon / Sony / Fujifilm</div>
-            <div class="tbyb-why">Узнай, нужна ли тебе зеркалка или хватит смартфона</div>
-            <div class="tbyb-price">от 800 ₽/день</div>
-            <div class="tbyb-vs">vs. покупка от 40 000 ₽</div>
-          </div>
-        </div>
-        <div class="tbyb-card" onclick="selCat('tools');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
-          <img class="tbyb-img" src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&q=80" alt="Электроинструмент">
-          <div class="tbyb-body">
-            <div class="tbyb-cat">Инструменты</div>
-            <div class="tbyb-name">Bosch / DeWalt / Makita</div>
-            <div class="tbyb-why">Разберись, какая мощность нужна именно тебе</div>
-            <div class="tbyb-price">от 350 ₽/день</div>
-            <div class="tbyb-vs">vs. покупка от 8 000 ₽</div>
-          </div>
-        </div>
-        <div class="tbyb-card" onclick="selCat('sport');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
-          <img class="tbyb-img" src="https://images.unsplash.com/photo-1547234935-80c7145ec969?w=400&q=80" alt="Лыжи">
-          <div class="tbyb-body">
-            <div class="tbyb-cat">Спорт</div>
-            <div class="tbyb-name">Лыжи / Сноуборд / Велосипед</div>
-            <div class="tbyb-why">Попробуй до сезона — зацепит или нет?</div>
-            <div class="tbyb-price">от 700 ₽/день</div>
-            <div class="tbyb-vs">vs. покупка от 25 000 ₽</div>
-          </div>
-        </div>
-        <div class="tbyb-card" onclick="selCat('home');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
-          <img class="tbyb-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Dyson">
-          <div class="tbyb-badge">популярно</div>
-          <div class="tbyb-body">
-            <div class="tbyb-cat">Техника</div>
-            <div class="tbyb-name">Dyson / KitchenAid / Nespresso</div>
-            <div class="tbyb-why">Правда ли Dyson стоит своих денег? Проверь!</div>
-            <div class="tbyb-price">от 400 ₽/день</div>
-            <div class="tbyb-vs">vs. покупка от 30 000 ₽</div>
-          </div>
-        </div>
-        <div class="tbyb-card" onclick="selCat('clothes');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
-          <img class="tbyb-img" src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&q=80" alt="Пуховик">
-          <div class="tbyb-body">
-            <div class="tbyb-cat">Одежда</div>
-            <div class="tbyb-name">Canada Goose / Moncler / Вечерние платья</div>
-            <div class="tbyb-why">Почувствуй разницу перед большой покупкой</div>
-            <div class="tbyb-price">от 800 ₽/день</div>
-            <div class="tbyb-vs">vs. покупка от 50 000 ₽</div>
-          </div>
-        </div>
-        <div class="tbyb-card" onclick="selCat('electronics');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">
-          <img class="tbyb-img" src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&q=80" alt="iPad">
-          <div class="tbyb-body">
-            <div class="tbyb-cat">Планшеты</div>
-            <div class="tbyb-name">iPad Pro / Samsung Tab / Wacom</div>
-            <div class="tbyb-why">Нужен ли тебе Pro или хватит обычного?</div>
-            <div class="tbyb-price">от 1 000 ₽/день</div>
-            <div class="tbyb-vs">vs. покупка от 60 000 ₽</div>
-          </div>
-        </div>
-      </div>
-      <div class="tbyb-cta">
-        <button class="tbyb-cta-btn" onclick="document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">Смотреть все вещи →</button>
-        <span class="tbyb-cta-note">3 400+ вещей уже ждут тебя</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="how">
-    <div class="how-inner">
-      <div class="section-eyebrow">Как это работает</div>
-      <h2 class="section-title">Три шага<br>к умной аренде</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-icon">🔍</div>
-          <h3>Найди и закажи</h3>
-          <p>Выбирай из тысяч вещей в твоём городе. Фильтруй по цене, категории, рейтингу. Пиши арендодателю прямо на платформе.</p>
-        </div>
-        <div class="step step-accent">
-          <div class="step-num">2</div>
-          <div class="step-icon">✅</div>
-          <h3>Забирай и пробуй</h3>
-          <p>Получи вещь, попользуйся, реши — подходит ли она тебе. Хочешь купить — знаешь наверняка. Не хочешь — просто верни.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-icon">♻️</div>
-          <h3>Верни и сэкономь</h3>
-          <p>Возвращаешь вещь — получаешь залог назад. Оставляй отзыв, строй репутацию. Экономь на ненужных покупках.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOCIAL PROOF -->
-  <section class="proof">
-    <div class="proof-inner">
-      <div class="section-eyebrow">Цифры говорят сами</div>
-      <h2 class="section-title">Нам доверяют</h2>
-      <div class="proof-grid">
-        <div class="proof-stat"><div class="proof-n">3 400+</div><div class="proof-l">активных объявлений прямо сейчас</div></div>
-        <div class="proof-stat"><div class="proof-n">97%</div><div class="proof-l">сделок завершаются без споров</div></div>
-        <div class="proof-stat"><div class="proof-n">18 000+</div><div class="proof-l">успешных аренд за год</div></div>
-        <div class="proof-stat"><div class="proof-n">₽ 4.2М</div><div class="proof-l">заработано арендодателями</div></div>
-      </div>
-      <div class="reviews-row">
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-text">«Взял Canon R50 на неделю перед покупкой. Понял, что мне нужен объектив другой — сэкономил 15 000 ₽ на ошибке!»</div>
-          <div class="review-author"><div class="review-dot">А</div><div><div class="review-name">Артём, Москва</div><div class="review-meta">арендовал камеру</div></div></div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-text">«Dyson оказался реально крутым. Взяла на 3 дня, сразу купила свой. Без проверки бы взяла другой и пожалела.»</div>
-          <div class="review-author"><div class="review-dot">М</div><div><div class="review-name">Мария, СПб</div><div class="review-meta">арендовала пылесос</div></div></div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-text">«Сдаю перфоратор и шуруповёрт. Зарабатываю 8–12 тысяч в месяц пока они просто лежали в гараже.»</div>
-          <div class="review-author"><div class="review-dot">Н</div><div><div class="review-name">Николай, Москва</div><div class="review-meta">арендодатель</div></div></div>
         </div>
       </div>
     </div>
@@ -656,7 +509,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
       <div class="footer-col">
         <h4>Арендаторам</h4>
         <a onclick="document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">Найти вещь</a>
-        <a onclick="document.getElementById('tbyb-section').scrollIntoView({behavior:'smooth'})">Проверить перед покупкой</a>
+        <a onclick="document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">Проверить перед покупкой</a>
         <a onclick="showDocs('how')">Как арендовать</a>
         <a onclick="showDocs('safety')">Безопасность</a>
       </div>
