@@ -394,6 +394,12 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .tbyb-item-price{font-size:13px;font-weight:800;color:#16a34a;margin-bottom:2px}
 .tbyb-item-vs{font-size:10px;color:var(--muted);line-height:1.3}
 
+
+.hcp-sub-text{font-size:12px;color:rgba(255,255,255,.5);line-height:1.55;padding:10px 0 6px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:10px}
+.hcp-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.hcp-chip{padding:5px 12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:999px;font-size:11px;font-weight:600;color:rgba(255,255,255,.8);cursor:pointer;transition:.15s;white-space:nowrap}
+.hcp-chip:hover{background:rgba(255,107,0,.25);border-color:var(--accent);color:#fff}
+
 </style>
 </head>
 <body>
@@ -454,7 +460,6 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
       <div class="hero-left">
         <div class="hero-tag"><span></span>АРЕНДУЙ · ЗАРАБАТЫВАЙ · ВОЗВРАЩАЙ</div>
         <h1>Арендуй.<br><em>Зарабатывай.</em><br>Возвращай.</h1>
-        <p class="hero-sub">Проверь любую вещь перед покупкой. Зарабатывай на том, что пылится дома. Всё просто — как бумеранг.</p>
         <div class="hero-utp">
           <div class="utp-pill"><span class="ico">🔍</span>Проверь перед покупкой</div>
           <div class="utp-pill"><span class="ico">💰</span>Зарабатывай на простое</div>
@@ -473,21 +478,22 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
       <div class="hero-right">
         <div class="hero-card-preview">
           <div class="hcp-img">
-            <img src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=500&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&q=80" alt="Вечернее платье">
             <div class="hcp-badge">Доступно</div>
             <div class="hcp-badge-try">Проверь перед покупкой</div>
           </div>
-          <div class="hcp-title">Canon EOS R50 + объектив</div>
-          <div class="hcp-price">1 200 ₽/день</div>
+          <div class="hcp-sub-text">Проверь любую вещь перед покупкой. Зарабатывай на том, что пылится дома. Всё просто — как бумеранг.</div>
+          <div class="hcp-title">Вечернее платье Zara р.42–44</div>
+          <div class="hcp-price">1 500 ₽/день</div>
           <div class="hcp-row">
             <span class="hcp-meta">📍 Москва · ★ 4.9</span>
-            <span class="hcp-meta">залог 5 000 ₽</span>
+            <span class="hcp-meta">залог 3 000 ₽</span>
           </div>
-        </div>
-        <div class="hero-mini-cards">
-          <div class="hmc"><div class="hmc-icon">🔍</div><div class="hmc-label">Попробуй до покупки</div></div>
-          <div class="hmc"><div class="hmc-icon">⭐</div><div class="hmc-label">Рейтинг арендодателей</div></div>
-          <div class="hmc"><div class="hmc-icon">♻️</div><div class="hmc-label">Вещи живут дольше</div></div>
+          <div class="hcp-chips">
+            <button class="hcp-chip" onclick="selCat('electronics');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">🔭 Объектив</button>
+            <button class="hcp-chip" onclick="selCat('tools');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">🔨 Перфоратор</button>
+            <button class="hcp-chip" onclick="selCat('sport');document.querySelector('.filters-bar').scrollIntoView({behavior:'smooth'})">🚗 Авто</button>
+          </div>
         </div>
       </div>
     </div>
