@@ -1051,7 +1051,7 @@ async function openDetail(id){
   showView('detail-view');
 }
 function rentItem(){
-  if(!currentUser){showToast('Войдите для аренды','red');return;}
+  // auth check disabled for test
   const today=new Date().toISOString().split('T')[0];
   document.getElementById('book-from').value=today;
   document.getElementById('book-to').value='';
@@ -1089,7 +1089,6 @@ async function submitBooking(){
 let uploadedPhotoUrls = []; // сюда складываем URL после загрузки в storage
 
 function openAddItem(){
-  if(!currentUser){showToast('Войдите чтобы размещать объявления','red');showView('profile-view');showProfile();return;}
   uploadedPhotoUrls=[];
   document.getElementById('photo-previews').innerHTML='';
   document.getElementById('upload-progress').style.display='none';
@@ -1173,7 +1172,7 @@ async function submitItem(e){
       status:'active',is_available:true,
       owner_id:currentUser?.id||null
     };
-    if(sb&&currentUser?.id){
+    if(sb){
       const{error}=await sb.from('items').insert(data);
       if(error)throw error;
     }
