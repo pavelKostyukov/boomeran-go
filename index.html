@@ -1127,7 +1127,7 @@ async function uploadPhotosToStorage(files){
   for(let i=0;i<files.length;i++){
     const file=files[i];
     const ext=file.name.split('.').pop().toLowerCase()||'jpg';
-    const path=`${currentUser.id}/${Date.now()}_${i}.${ext}`;
+    const path=`${currentUser?.id||'anon'}/${Date.now()}_${i}.${ext}`;
     pct.textContent=`Загружаем фото ${i+1} из ${files.length}...`;
     bar.style.width=((i/files.length)*80)+'%';
     try{
